@@ -1,0 +1,27 @@
+#!/bin/sh
+
+action=`zenity --list --text 'THE GAME' --column accion 'uma' 'casa' 'proxy on' 'proxy off' 'apagar' 'suspender' 'reboot'`
+wifi_cmd='/home/carl/dev/ratpoison/wifi.py'
+if [ "$action" = "uma" ]
+then
+  $wifi_cmd uni
+elif [ "$action" = "casa" ]
+then
+  $wifi_cmd casa
+elif [ "$action" = "proxy on" ]
+then
+  $wifi_cmd proxy
+elif [ "$action" = "proxy off" ]
+then
+  $wifi_cmd noproxy
+elif [ "$action" = "apagar" ]
+then
+  init 0
+elif [ "$action" = "reboot" ]
+then
+  init 6
+elif [ "$action" = "suspender" ]
+then
+  hibernate
+fi
+
