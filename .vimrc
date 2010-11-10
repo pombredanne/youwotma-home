@@ -46,7 +46,7 @@ set complete=.,w,b,t " reglas de autocompletado
 set ignorecase " no coincidir mayusculas al buscar
 set smartcase " conincidir mayuscular inteligentemente
 set incsearch " buscar modo firefox
-set infercase " corregir mayusculas en la busqueda 
+set infercase " corregir mayusculas en la busqueda
 
 " autocompletar comandos
 set wildmode=list:longest,full
@@ -79,7 +79,13 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
-"autocmd FileType python setlocal omnifunc=pysmell#Complete
+
+" Archivos de tags
+set tags=~/.stslib-tags,~/.django-tags
+
+" C-Enter abre una nueva linea siempre, aunque este
+" el menu de completar abierto
+imap <C-Enter> <C-o>o
 
 " Muestra los espacios al final en rojo
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -90,7 +96,7 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Indentacion
-set ts=4 sts=4 sw=4 expandtab smarttab ai si 
+set ts=4 sts=4 sw=4 expandtab smarttab ai si
 
 " Historia
 set history=700
@@ -103,3 +109,6 @@ set wildmenu
 
 " No usar los malditos archivos swap
 set noswapfile
+
+" pydiction
+let g:pydiction_location = '/home/carl/dev/pydiction/complete-dict'
