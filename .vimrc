@@ -112,3 +112,6 @@ set noswapfile
 
 " pydiction
 let g:pydiction_location = '/home/carl/dev/pydiction/complete-dict'
+
+" autorecargar .vimrc
+autocmd bufwritepost .vimrc source $MYVIMRC
