@@ -1,8 +1,5 @@
 #!/bin/env python
 
-# Conecta al wifi de la uma de mala manera
-# Y activa el proxy
-
 import ratopen as rat
 from subprocess import Popen, PIPE
 import re,time
@@ -69,12 +66,26 @@ def firefox_proxy(on):
   s.send("""Application.prefs.setValue("network.proxy.type",%s);""" % mode)
   s.close()
 
+def wget_proxy(on):
+    foo = ["sed", "-i"]
+    if on:
+        foo += ["s/^use_proxy/#use_proxy/"]
+    else:
+        foo += ["s/^#use_proxy/use_proxy/"]
+    foo += ["/etc/wgetrc"]
+    Popen(foo).read()
+
+
 def proxy(on):
   try:
     firefox_proxy(on)
   except:
     pass
-  
+  try:
+      wget_proxy(on)
+  except:
+    pass
+
   for protocol in ("http","https","ftp"):
     remp = {"p":protocol,"P":protocol.upper()}
     if on:
