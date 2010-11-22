@@ -118,3 +118,6 @@ autocmd bufwritepost .vimrc source $MYVIMRC
 
 " corrección ortográfica
 set spell spelllang=es
+
+" alias ,t -> tabnew. El espacio al final es intencionado
+map ,t :tabnew 
