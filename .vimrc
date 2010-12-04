@@ -1,3 +1,5 @@
+call pathogen#runtime_append_all_bundles()
+
 set showmode
 set smartindent
 
@@ -83,9 +85,12 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 " Archivos de tags
 set tags=~/.stslib-tags,~/.django-tags
 
+" No auto-añadir saltos de linea
+set tw=0
+
 " C-Enter abre una nueva linea siempre, aunque este
 " el menú de completar abierto
-imap <C-Enter> <C-o>o
+imap <C-Enter> <Esc>o
 
 " Muestra los espacios al final en rojo
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -121,3 +126,10 @@ set spell spelllang=es
 
 " alias ,t -> tabnew. El espacio al final es intencionado
 map ,t :tabnew 
+
+" NERDtree
+map <F2> :NERDTreeToggle<CR>
+
+"Cuando borro con la x, no escribir en los registros
+map x "_d
+vmap x "_d

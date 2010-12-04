@@ -1,6 +1,6 @@
 #!/bin/sh
 
-action=`zenity --list --text 'THE GAME' --column accion 'uma' 'casa' 'proxy on' 'proxy off' 'apagar' 'suspender' 'reboot'`
+action=`zenity --list --text 'THE GAME' --column accion 'uma' 'casa' 'proxy on' 'apagar' 'servidores' 'reboot' 'proxy off'`
 wifi_cmd='/home/carl/dev/ratpoison/wifi.py'
 if [ "$action" = "uma" ]
 then
@@ -23,5 +23,9 @@ then
 elif [ "$action" = "suspender" ]
 then
   hibernate
+elif [ "$action" = "servidores" ]
+then
+  /etc/init.d/apache2 start
+  /etc/init.d/mysql start
 fi
 
