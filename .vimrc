@@ -131,5 +131,5 @@ map ,t :tabnew
 map <F2> :NERDTreeToggle<CR>
 
 "Cuando borro con la x, no escribir en los registros
-map x "_d
-vmap x "_d
+map x "_<Del>
+vmap x "_<Del>
