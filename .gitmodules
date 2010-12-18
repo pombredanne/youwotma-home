@@ -1,3 +1,6 @@
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
+[submodule ".vim/bundle/scss"]
+	path = .vim/bundle/scss
+	url = http://github.com/cakebaker/scss-syntax.vim.git

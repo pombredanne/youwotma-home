@@ -13,6 +13,10 @@ hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold guifg=white guibg=
 au InsertEnter * hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold guifg=white guibg=#330000
 au InsertLeave * hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold guifg=white guibg=#333333
 
+au BufRead,BufNewFile *.scss set filetype=scss  "resaltado de archivos scss
+"au BufWrite *.scss !compass compile <afile>
+au BufWrite *.scss !~/dev/scripts/compilescss.py <afile>
+
 " linea de estado
 set statusline=
 set statusline+=%F%m%h%r%w "Flags varios
