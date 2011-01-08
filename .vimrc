@@ -1,5 +1,3 @@
-call pathogen#runtime_append_all_bundles()
-
 set showmode
 set smartindent
 
@@ -14,20 +12,7 @@ au InsertEnter * hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold g
 au InsertLeave * hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold guifg=white guibg=#333333
 
 au BufRead,BufNewFile *.scss set filetype=scss  "resaltado de archivos scss
-"au BufWrite *.scss !compass compile <afile>
-au BufWrite *.scss !~/dev/scripts/compilescss.py <afile>
-
-" linea de estado
-set statusline=
-set statusline+=%F%m%h%r%w "Flags varios
-set statusline+=\ %{fugitive#statusline()} " Branch de GIT
-set statusline+=%= "Alinear a la derecha
-set statusline+=[%{&encoding}\ %{&fileformat}\ %{strlen(&ft)?&ft:'none'}] " Codificación y tipo de archivo
-set statusline+=\ %12.(%c:%l/%L%) " posición en la pagina
-
-" quitar barras de menú y de herramientas
-set guioptions-=m
-set guioptions-=T
+au BufWritePost *.scss !~/dev/scripts/compilescss.py <afile>
 
 " mostrar comandos parciales en la linea de comandos
 set showcmd
@@ -96,14 +81,6 @@ set tw=0
 " el menú de completar abierto
 imap <C-Enter> <Esc>o
 
-" Muestra los espacios al final en rojo
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
 " Indentación
 set ts=4 sts=4 sw=4 expandtab smarttab ai si
 
@@ -119,21 +96,47 @@ set wildmenu
 " No usar los malditos archivos swap
 set noswapfile
 
-" pydiction
-let g:pydiction_location = '/home/carl/dev/pydiction/complete-dict'
 
-" auto recargar .vimrc
-autocmd bufwritepost .vimrc source $MYVIMRC
+if has("gui_running")
 
-" corrección ortográfica
-set spell spelllang=es
+    call pathogen#runtime_append_all_bundles()
 
-" alias ,t -> tabnew. El espacio al final es intencionado
-map ,t :tabnew 
+    " linea de estado
+    set statusline=
+    set statusline+=%F%m%h%r%w "Flags varios
+    set statusline+=\ %{fugitive#statusline()} " Branch de GIT
+    set statusline+=%= "Alinear a la derecha
+    set statusline+=[%{&encoding}\ %{&fileformat}\ %{strlen(&ft)?&ft:'none'}] " Codificación y tipo de archivo
+    set statusline+=\ %12.(%c:%l/%L%) " posición en la pagina
 
-" NERDtree
-map <F2> :NERDTreeToggle<CR>
+    " quitar barras de menú y de herramientas
+    set guioptions-=m
+    set guioptions-=T
 
-"Cuando borro con la x, no escribir en los registros
-map x "_<Del>
-vmap x "_<Del>
+
+    " Muestra los espacios al final en rojo
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    match ExtraWhitespace /\s\+$/
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd BufWinLeave * call clearmatches()
+
+
+    " pydiction
+    let g:pydiction_location = '/home/carl/dev/pydiction/complete-dict'
+
+    " corrección ortográfica
+    set spell spelllang=es
+
+    " alias ,t -> tabnew. El espacio al final es intencionado
+    map ,t :tabnew 
+
+    " NERDtree
+    map <F2> :NERDTreeToggle<CR>
+
+    "Cuando borro con la x, no escribir en los registros
+    map x "_dl
+    vmap x "_<Del>
+
+endif

@@ -16,3 +16,6 @@ if contdir_last == "css":
     args += ["--images-dir",os.path.join(contdir,"..","img")]
 
 subprocess.Popen(args).wait()
+
+#sys.stdin.read(1)
+
