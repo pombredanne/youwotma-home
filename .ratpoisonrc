@@ -1,18 +1,17 @@
-#Cambia la tecla de escape a la de menu (Alado de Alt-gr)
-#Muy comoda, y no se echa de menos
 escape Menu
 
-#Fondo de pantalla
-exec feh --bg-scale /home/carl/gtk-2.0/vim-shortcuts.png &
+bind Escape abort
+
 
 #Cambiar el terminal por defecto a gnome-terminal
 bind c exec ratopen gnome-terminal
 bind y exec ratopen Navigator firefox
-#bind y exec ratopen chrome chromium-bin   # Solo para cuando Minefield esta muy inestable
+#bind y exec ratopen chrome chromium-bin
 bind T exec ratopen Mail thunderbird
-bind B exec ratopen Banshee banshee-1
+bind B exec ratopen Banshee banshee
 bind E exec ratopen skype skype
-bind W exec ratopen Pidgin pidgin 
+bind W exec ratopen empathy empathy
+bind H exec ratopen transmission-gtk
 bind g exec ratopen gvim gvim
 bind z remove
 
@@ -21,16 +20,20 @@ definekey top XF86AudioRaiseVolume exec dev/ratpoison/volumen.sh up
 definekey top XF86AudioLowerVolume exec dev/ratpoison/volumen.sh down
 definekey top XF86AudioMute exec dev/ratpoison/volumen.sh mute
 
+#look of dissaprovalstartup-root.sh
+definekey top s-l exec dev/ratpoison/lookofdissaproval.sh
+bind s-l exec dev/ratpoison/lookofdissaproval.sh
+
 #reproduccion de banshee
-definekey top XF86AudioNext exec banshee-1 --next
-definekey top XF86AudioPrev exec banshee-1 --restart-or-previous
-definekey top XF86AudioPlay exec banshee-1 --toggle-playing
-definekey top XF86AudioStop exec banshee-1 --stop
+definekey top XF86AudioNext exec banshee --next
+definekey top XF86AudioPrev exec banshee --restart-or-previous
+definekey top XF86AudioPlay exec banshee --toggle-playing
+definekey top XF86AudioStop exec banshee --stop
 
 exec dev/ratpoison/startup.sh
 
 #copiado de por ahi - reloj mas completo
-bind a exec dev/ratpoison/relog.sh 
+bind a exec dev/ratpoison/relog.sh
 
 #Informacion de la bateria
 bind t exec ratpoison -c "echo `acpi -V`"
@@ -38,10 +41,11 @@ bind t exec ratpoison -c "echo `acpi -V`"
 #captura de pantalla
 bind Print exec dev/ratpoison/screenshoot.sh
 
-#Siguiente y anterior ventana de la misma aplicacion
+bind C-n cnext
+bind C-p cpre
+
 bind C-n inext
 bind C-p iprev
 
-#Menu de utilidades varias
 bind o exec sudo dev/ratpoison/wifi-gk
 
