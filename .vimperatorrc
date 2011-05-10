@@ -1,0 +1,12 @@
+:source ~/.vimperator/manual/_libly.js
+:source ~/.vimperator/manual/feedSomeKeys_3.js
+
+:set noscrollbars
+
+:command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+
+:lazy fmaps -u='www\.google\.com/reader' -events=vkeypress j k s
+:lazy fmaps -u='www\.reddit\.com' -events=vkeydown j k x a z h l
+:lazy fmaps -u='twitter\.com' -events=keypress j k .
+:lazy fmaps -u='boston\.com' -events=keypress j k
+
