@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -e
+
+cd /home/carl/tmp
+
+fn=`echo "$1" | base64`
+name=$2
+artist=$3
+album=$4
+mpfile=`echo "$name-$artist.mp3" | sed -r 's/[^-a-zA-Z0-9\.]/_/g'`
+
+
+youtube-dl -o "$fn" "$1"
+ffmpeg -i "$fn" "$mpfile"
+id3v2 --artist "$artist" --album "$album" --song "$name" "$mpfile"
+mp3gain -r $mpfile
+mv "$mpfile" /home/carl/Musica/

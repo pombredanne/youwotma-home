@@ -1,0 +1,4 @@
+#!/bin/sh
+
+killall -r gnome-panel
+killall -r metacity
