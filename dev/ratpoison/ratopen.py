@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/python
 
 # Script mas util EVER:
 # Toma dos parametros: Nombre de la ventana y un nombre de un ejecutable

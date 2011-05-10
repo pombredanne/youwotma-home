@@ -1,3 +1,5 @@
+
+set -e
 fn=~/Pictures/screenshots/`date +"%m-%d-%Y-%T"`.png
 scrot -q 100 -d 01 "$fn" 
 ratpoison -c "echo Screenshot saved!"

@@ -46,7 +46,7 @@ def wait_wpa(finstatus="COMPLETED"):
 
 def dhcpd():
   rat.rat_echo("DHCP discover...")
-  dhc = Popen(["dhcpcd","wlan0"],stdout=PIPE,stderr=PIPE)
+  dhc = Popen(["dhclient","wlan0"],stdout=PIPE,stderr=PIPE)
   rat.rat_echo(dhc.stdout.read() + dhc.stderr.read())
 
 def firefox_proxy(on):
@@ -104,6 +104,7 @@ if __name__ == "__main__":
   import sys
   action = sys.argv[1]
   if action == "uni":
+    proxy(True)
     stop_wpa()
     print "=============="
     start_wpa()
@@ -113,7 +114,6 @@ if __name__ == "__main__":
     if res:
       print "=============="
       dhcpd()
-      proxy(True)
     else:
       rat.rat_echo("Error conexion (timeout o apagado inesperado)")
       print "No se ha podido conectar"

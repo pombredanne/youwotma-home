@@ -1,6 +1,8 @@
 set showmode
 set smartindent
 
+set lazyredraw " magia
+
 " mostrar siempre la linea de estatus
 set laststatus=2
 
