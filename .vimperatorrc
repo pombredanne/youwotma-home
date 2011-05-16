@@ -10,3 +10,8 @@
 :lazy fmaps -u='twitter\.com' -events=keypress j k .
 :lazy fmaps -u='boston\.com' -events=keypress j k
 
+:map ,r :switchoropen (www\\.)?reddit\\.com http://reddit.com<cr>
+:map ,t :switchoropen (www\\.)?twitter\\.com http://twitter.com<cr>
+:map ,f :switchoropen (www\\.)?facebook\\.com http://facebook.com<cr>
+:map ,m :switchoropen mail\\.google\\.com http://mail.bengoarocandio.com<cr>
+:map ,g :switchoropen (www\\.)?google\\.com http://google.com<cr>

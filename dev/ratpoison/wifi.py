@@ -66,6 +66,8 @@ def firefox_proxy(on):
   s.send("""Application.prefs.setValue("network.proxy.type",%s);""" % mode)
   s.close()
 
+
+
 def wget_proxy(on):
     foo = ["sed", "-i"]
     if on:
@@ -76,6 +78,16 @@ def wget_proxy(on):
     Popen(foo).read()
 
 
+def apt_proxy(on):
+    foo = ["sed", "-i"]
+    if on:
+        foo += ["s/^\/\/Acquire::http::Proxy/Acquire::http::Proxy/"]
+    else:
+        foo += ["s/^Acquire::http::Proxy/\/\/Acquire::http::Proxy/"]
+    foo += ["/etc/apt/apt.conf.d/95proxy"]
+    Popen(foo).read()
+
+
 def proxy(on):
   try:
     firefox_proxy(on)
@@ -83,6 +95,10 @@ def proxy(on):
     pass
   try:
       wget_proxy(on)
+  except:
+    pass
+  try:
+      apt_proxy(on)
   except:
     pass
 
