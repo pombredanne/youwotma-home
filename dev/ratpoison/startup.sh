@@ -1,9 +1,14 @@
 #!/bin/sh
 set -e
+
+st=" "
+
 sudo /home/carl/dev/ratpoison/startup-root.sh
 
+firefox &
+
 ratpoison -c 'echo Iniciando dropbox...'
-dropboxd &
-xinput set-prop 12 "Synaptics Tap Time" 0
+
+xinput set-prop 12 "Synaptics Tap Time" 0 || xinput set-prop 14 "Synaptics Tap Time" 0
 ratpoison -c 'echo Todo iniciado'
 

@@ -50,22 +50,18 @@ def dhcpd():
   rat.rat_echo(dhc.stdout.read() + dhc.stderr.read())
 
 def firefox_proxy(on):
-  rat.rat_echo("Proxy %s" % on)
   if on:
-    mode = 1
+    cmd = "proxyon"
   else:
-    mode = 0
+    cmd = "proxyoff"
   import socket
 
   HOST = 'localhost'    # The remote host
-  PORT = 4242              # The same port as used by the server
+  PORT = 3142              # The same port as used by the server
   s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   s.connect((HOST, PORT))
-  time.sleep(0.1)
-  data = s.recv(1024)
-  s.send("""Application.prefs.setValue("network.proxy.type",%s);""" % mode)
+  s.send(cmd + "\n")
   s.close()
-
 
 
 def wget_proxy(on):

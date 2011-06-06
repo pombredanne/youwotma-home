@@ -1,3 +1,5 @@
+:color indigo
+
 :source ~/.vimperator/manual/_libly.js
 :source ~/.vimperator/manual/feedSomeKeys_3.js
 
