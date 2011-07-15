@@ -1,0 +1,11 @@
+#!/bin/js
+
+get_ip(){
+    dig $1 | grep -A 1 'ANSWER SECTION' | tail -n 1 | awk '{print $5}'
+}
+
+for host in `cat muhosts`
+do
+    echo "$host:"`get_ip $host` >> aliases
+done
+
