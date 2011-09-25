@@ -16,6 +16,12 @@ au InsertLeave * hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold g
 au BufRead,BufNewFile *.scss set filetype=scss  "resaltado de archivos scss
 au BufWritePost *.scss !~/dev/scripts/compilescss.py <afile>
 
+au BufRead,BufNewFile *.less set filetype=less  "resaltado de archivos less
+au BufWritePost *.less !~/dev/scripts/compileless.py <afile>
+
+au BufRead,BufNewFile *.coffee set filetype=coffee  "resaltado de archivos scss
+au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
+
 " mostrar comandos parciales en la linea de comandos
 set showcmd
 

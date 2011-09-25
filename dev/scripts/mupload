@@ -7,5 +7,6 @@ get_ip(){
 for host in `cat muhosts`
 do
     echo "$host:"`get_ip $host` >> aliases
+    echo "$host"
 done
 

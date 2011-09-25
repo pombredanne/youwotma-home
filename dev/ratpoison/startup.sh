@@ -3,6 +3,8 @@ set -e
 
 st=" "
 
+/home/carl/dev/ratpoison/wallpaper.sh &
+
 sudo /home/carl/dev/ratpoison/startup-root.sh
 
 firefox &
