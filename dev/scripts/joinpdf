@@ -1,0 +1,6 @@
+#/bin/bash
+
+OUTFILE=$1
+shift
+
+gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite "-sOutputFile=$OUTFILE" $@
