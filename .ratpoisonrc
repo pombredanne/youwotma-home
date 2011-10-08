@@ -1,7 +1,20 @@
 escape Menu
 
+startup_message off
+
 bind Escape abort
 
+set font droidsansmono-11
+
+# Hack para quitar los bordes que están en el borde de la pantalla
+set padding -1 -1 -1 -1
+set border 1
+set fgcolor #ECD078
+set bgcolor #C02942
+set barborder 2
+set bargravity c
+set bwcolor #ECD078
+set fwcolor #ECD078
 
 #Cambiar el terminal por defecto a gnome-terminal
 bind c exec ratopen gnome-terminal
@@ -10,10 +23,13 @@ bind y exec ratopen Navigator firefox
 bind T exec ratopen Mail thunderbird
 bind B exec ratopen Banshee banshee
 bind E exec ratopen skype skype
-bind W exec ratopen empathy empathy
+#bind W exec ratopen empathy empathy
+bind W exec ratopen pidgin pidgin
 bind H exec ratopen transmission-gtk
 bind g exec ratopen gvim gvim
-bind z remove
+bind ntilde exec wicd-client -n
+bind Ntilde exec gnome-control-center
+bind q exec feh /home/carl/dev/uma/horario
 
 #Volumen
 definekey top XF86AudioRaiseVolume exec dev/ratpoison/volumen.sh up
