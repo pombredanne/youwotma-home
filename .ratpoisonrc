@@ -35,16 +35,22 @@ bind q exec feh /home/carl/dev/uma/horario
 definekey top XF86AudioRaiseVolume exec dev/ratpoison/volumen.sh up
 definekey top XF86AudioLowerVolume exec dev/ratpoison/volumen.sh down
 definekey top XF86AudioMute exec dev/ratpoison/volumen.sh mute
-
-#look of dissaprovalstartup-root.sh
-definekey top s-l exec dev/ratpoison/lookofdissaproval.sh
-bind s-l exec dev/ratpoison/lookofdissaproval.sh
-
 #reproduccion de banshee
 definekey top XF86AudioNext exec banshee --next
 definekey top XF86AudioPrev exec banshee --restart-or-previous
 definekey top XF86AudioPlay exec banshee --toggle-playing
 definekey top XF86AudioStop exec banshee --stop
+
+definekey top s-Up exec dev/ratpoison/volumen.sh up
+definekey top s-Down exec dev/ratpoison/volumen.sh down
+definekey top s-End exec dev/ratpoison/volumen.sh mute
+definekey top s-Right exec banshee --next
+definekey top s-Left exec banshee --restart-or-previous
+definekey top s-Delete exec banshee --toggle-playing
+
+#look of dissaprovalstartup-root.sh
+definekey top s-l exec dev/ratpoison/lookofdissaproval.sh
+bind s-l exec dev/ratpoison/lookofdissaproval.sh
 
 exec dev/ratpoison/startup.sh
 
