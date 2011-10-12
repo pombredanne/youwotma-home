@@ -106,6 +106,7 @@ var css = <css><![CDATA[
 
 .tabbrowser-tab{
     min-height: 20px !important;
+    min-width: 0px !important;
 }
 
 
