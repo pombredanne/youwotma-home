@@ -106,9 +106,17 @@ var css = <css><![CDATA[
 
 .tabbrowser-tab{
     min-height: 20px !important;
-    min-width: 0px !important;
+    /*min-width: 0px !important;*/
 }
 
+.tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
+    position:static !important;
+    -moz-margin-start: 0px !important;
+
+}
+#tabbrowser-tabs {
+    -moz-margin-start: 0px !important;
+}
 
 ]]></css>.toString();
 styles.addSheet(false, "indigo-customize-toolbar", "chrome://*", css, false);
