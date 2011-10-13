@@ -3,40 +3,40 @@
 	<entry name="delete_binding" mtime="1308507126" type="string">
 		<stringvalue>escape-sequence</stringvalue>
 	</entry>
-	<entry name="alternate_screen_scroll" mtime="1318496024" type="bool" value="true"/>
+	<entry name="alternate_screen_scroll" mtime="1318066297" type="bool" value="true"/>
 	<entry name="backspace_binding" mtime="1308507126" type="string">
 		<stringvalue>ascii-del</stringvalue>
 	</entry>
 	<entry name="scrollback_unlimited" mtime="1288531347" type="bool" value="false"/>
-	<entry name="font" mtime="1318496024" type="string">
+	<entry name="font" mtime="1318066297" type="string">
 		<stringvalue>DejaVu Sans Mono 10</stringvalue>
 	</entry>
-	<entry name="default_show_menubar" mtime="1318496024" type="bool" value="false"/>
+	<entry name="default_show_menubar" mtime="1318066297" type="bool" value="false"/>
 	<entry name="use_system_font" mtime="1307555729" type="bool" value="true"/>
 	<entry name="allow_bold" mtime="1290070319" type="bool" value="true"/>
-	<entry name="scrollback_lines" mtime="1318496024" type="int" value="10000"/>
-	<entry name="background_darkness" mtime="1318496024" type="float" value="0"/>
+	<entry name="scrollback_lines" mtime="1318066297" type="int" value="10000"/>
+	<entry name="background_darkness" mtime="1318066297" type="float" value="0"/>
 	<entry name="background_type" mtime="1288531338" type="string">
 		<stringvalue>solid</stringvalue>
 	</entry>
-	<entry name="use_theme_colors" mtime="1318496024" type="bool" value="false"/>
-	<entry name="cursor_shape" mtime="1318496024" type="string">
+	<entry name="use_theme_colors" mtime="1318066297" type="bool" value="false"/>
+	<entry name="cursor_shape" mtime="1318066297" type="string">
 		<stringvalue>ibeam</stringvalue>
 	</entry>
-	<entry name="visible_name" mtime="1318496024" type="string">
+	<entry name="visible_name" mtime="1318066297" type="string">
 		<stringvalue>Default</stringvalue>
 	</entry>
-	<entry name="palette" mtime="1318496024" type="string">
+	<entry name="palette" mtime="1318066297" type="string">
 		<stringvalue>#3EDE695858C6:#707050505050:#6060B4B48A8A:#DFDFAFAF8F8F:#9A9AB9B9D7D7:#DCDC8C8CC4C4:#8C8CD1D1D3D3:#DCDCDCDCCDCD:#707090908080:#AD5C00000000:#7272D5D5A2A2:#F0F0DFDFAFAF:#9494C0C0F3F3:#ECEC9393D5D5:#9393E1E1E3E3:#EEEEEEEEECEC</stringvalue>
 	</entry>
-	<entry name="login_shell" mtime="1318496024" type="bool" value="true"/>
-	<entry name="background_color" mtime="1318496024" type="string">
+	<entry name="login_shell" mtime="1318066297" type="bool" value="true"/>
+	<entry name="background_color" mtime="1318066297" type="string">
 		<stringvalue>#2C2C2C2C2C2C</stringvalue>
 	</entry>
-	<entry name="foreground_color" mtime="1318496024" type="string">
+	<entry name="foreground_color" mtime="1318066297" type="string">
 		<stringvalue>#DCDCDCDCCDCD</stringvalue>
 	</entry>
-	<entry name="bold_color" mtime="1318496024" type="string">
+	<entry name="bold_color" mtime="1318066297" type="string">
 		<stringvalue>#000000000000</stringvalue>
 	</entry>
 </gconf>
