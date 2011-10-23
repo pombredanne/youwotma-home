@@ -30,6 +30,7 @@ bind g exec ratopen gvim gvim
 bind ntilde exec wicd-client -n
 bind Ntilde exec gnome-control-center
 bind q exec feh /home/carl/dev/uma/horario
+bind h nextscreen
 
 #Volumen
 definekey top XF86AudioRaiseVolume exec dev/ratpoison/volumen.sh up
