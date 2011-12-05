@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 st=" "
@@ -9,7 +9,7 @@ sudo /home/carl/dev/ratpoison/startup-root.sh
 
 firefox &
 
-if [ `cat ~/.pcname` == "portatil" ]
+if [ `cat /home/carl/.pcname` == "portatil" ]
 then
     xinput set-prop 12 "Synaptics Tap Time" 0 || xinput set-prop 14 "Synaptics Tap Time" 0
 #else if [ `cat ~/.pcname` == "pc" ]

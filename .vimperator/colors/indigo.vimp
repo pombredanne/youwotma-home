@@ -90,8 +90,9 @@ var css = <css><![CDATA[
 }
 
 #tabbrowser-tabs tab{
-    border: 1px solid #1c1c1c !important;
-    background: #1c1c1c !important;
+    border: solid #ccc !important;
+    border-width: 0px 1px !important;
+    background: #444444 !important;
     padding: 0 !important;
     margin: 0 !important;
     -moz-border-radius: 0 !important;
@@ -105,6 +106,7 @@ var css = <css><![CDATA[
 }
 
 .tabbrowser-tab{
+    font-family: monospace;
     min-height: 20px !important;
     /*min-width: 0px !important;*/
 }
