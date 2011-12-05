@@ -1,5 +1,7 @@
 (function() {
     var bangs = {
+"rls":encodeURIComponent("http://www.rlslog.net/?s=PLACEHOLDER&sbutt=Go"),
+"sub":encodeURIComponent("http://www.subtitulos.es/search.php?cx=partner-pub-9712736367130269%3A92aabu-f398&cof=FORID%3A10&ie=ISO-8859-1&q=PLACEHOLDER&sa=Buscar&siteurl=www.subtitulos.es%2F"),
 "gi":"https%3A//encrypted.google.com/search%3Fq%3DPLACEHOLDER%26tbm%3Disch%26tbs%3Dimgo%3A1",
 "mapquest":"http%3A//www.mapquest.com/%3Fq%3DPLACEHOLDER",
 "howthingswork":"http%3A//howthingswork.virginia.edu/search.php%3Fsearchs%3DPLACEHOLDER%26Go.x%3D0%26Go.y%3D0%26searchq%3Dyes%26searcha%3Dyes",

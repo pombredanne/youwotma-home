@@ -13,15 +13,6 @@ hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold guifg=white guibg=
 au InsertEnter * hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold guifg=white guibg=#330000
 au InsertLeave * hi StatusLine cterm=bold ctermfg=white ctermbg=black gui=bold guifg=white guibg=#333333
 
-au BufRead,BufNewFile *.scss set filetype=scss  "resaltado de archivos scss
-au BufWritePost *.scss !~/dev/scripts/compilescss.py <afile>
-
-au BufRead,BufNewFile *.less set filetype=less  "resaltado de archivos less
-au BufWritePost *.less !~/dev/scripts/compileless.py <afile>
-
-au BufRead,BufNewFile *.coffee set filetype=coffee  "resaltado de archivos scss
-au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
-
 " mostrar comandos parciales en la linea de comandos
 set showcmd
 
@@ -79,6 +70,10 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
+au BufRead,BufNewFile *.scss set filetype=scss  "resaltado de archivos scss
+au BufRead,BufNewFile *.less set filetype=less  "resaltado de archivos less
+au BufRead,BufNewFile *.coffee set filetype=coffee  "resaltado de archivos coffee
+
 " Archivos de tags
 set tags=~/.stslib-tags,~/.django-tags
 
@@ -106,6 +101,11 @@ set noswapfile
 
 
 if has("gui_running")
+    au BufWritePost * :silent !/home/carl/dev/aftersave/aftersave.sh "%:p"
+    au BufWritePost *.scss !~/dev/scripts/compilescss.py <afile>
+    au BufWritePost *.less !~/dev/scripts/compileless.py <afile>
+    au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
+
 
     call pathogen#runtime_append_all_bundles()
 
@@ -142,6 +142,7 @@ if has("gui_running")
 
     " NERDtree
     map <F2> :NERDTreeToggle<CR>
+    nnoremap <F4> :GundoToggle<CR>
 
     "Cuando borro con la x, no escribir en los registros
     map x "_dl
