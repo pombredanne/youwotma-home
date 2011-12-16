@@ -13,6 +13,7 @@ mpfile=`echo "$name-$artist.mp3" | sed -r 's/[^-a-zA-Z0-9\.]/_/g'`
 
 youtube-dl -o "$fn" "$1"
 ffmpeg -i "$fn" "$mpfile"
+rm "$fn"
 id3v2 --artist "$artist" --album "$album" --song "$name" "$mpfile"
 mp3gain -r $mpfile
 mv "$mpfile" /home/carl/Musica/
