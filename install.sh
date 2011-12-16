@@ -2,6 +2,8 @@ GIT_ROOT=`pwd`
 PREOK="[OK]  "
 PREFAIL="[FAIL]"
 
+source utils.sh
+
 if [ ! -e ~/.pcname ]
 then
     echo "Donde estas? laptop/pc"
@@ -106,5 +108,3 @@ do
     fi
 done
 
-
-gconftool -t bool /apps/nautilus/preferences/show_desktop -s false

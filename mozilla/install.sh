@@ -1,8 +1,5 @@
 #!/bin/sh
-echo "install firefox/thunderbird? (y/n)"
-read FXINSTALL
-if [ x"$FXINSTALL" = "xy" ]
-then
+confirm "install firefox/thunderbird" && {
 
     FIREFOX_URL=`python mozurl.py firefox`
     THUNDER_URL=`python mozurl.py thunderbird`
@@ -29,5 +26,4 @@ then
     sudo ln -s ../lib/thunderbird/thunderbird thunderbird
     sudo ln -s ../lib/firefox/firefox firefox
 
-fi
-
+}
