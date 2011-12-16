@@ -46,3 +46,8 @@ acpi
 wicd
 sm
 chromium-browser
+ffmpeg
+python-django
+python-django-south
+id3v2
+mp3gain
