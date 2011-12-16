@@ -62,7 +62,7 @@ set mouse=a
 " no partir lineas
 set nowrap
 
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS

@@ -141,6 +141,7 @@ endfunction
 
 "
 function acp#meetsForHtmlOmni(context)
+  return 0
   return g:acp_behaviorHtmlOmniLength >= 0 &&
         \ a:context =~ '\(<\|<\/\|<[^>]\+ \|<[^>]\+=\"\)\k\{' .
         \              g:acp_behaviorHtmlOmniLength . ',}$'
