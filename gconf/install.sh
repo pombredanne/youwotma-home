@@ -6,7 +6,7 @@ gconftool -t bool /apps/nautilus/preferences/exit_with_last_window -s true
 gconftool -t bool /apps/nautilus/preferences/media_automount -s false
 
 #Other
-gconftool -t bool /desktop/gnome/background/draw_background false
+gconftool -t bool /desktop/gnome/background/draw_background -s false
 
 #gnome-terminal preferences
 gconftool -t string /apps/gnome-terminal/profiles/Default/delete_binding -s "escape-sequence"

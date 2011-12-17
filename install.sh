@@ -76,12 +76,6 @@ lnbak .vimrc
 lnbak .bash_aliases
 lnbak .inputrc
 
-
-mkdir -p .gconf/apps/
-cd .gconf/apps/
-lnbak gnome-terminal .gconf/apps/
-cd ~
-
 [ ! -d dev ] && mkdir dev
 
 cd "$GIT_ROOT/dev"
