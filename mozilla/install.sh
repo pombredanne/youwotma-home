@@ -22,8 +22,10 @@ confirm "install firefox/thunderbird" && {
     sudo rm -f firefox
     sudo rm -f thunderbird
 
-
     sudo ln -s ../lib/thunderbird/thunderbird thunderbird
     sudo ln -s ../lib/firefox/firefox firefox
+
+    sudo aptitude hold firefox || echo "holding firefox failled"
+    sudo aptitude hold thunderbird || echo "holding thunderbird failled"
 
 }

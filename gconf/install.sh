@@ -4,6 +4,7 @@
 gconftool -t bool /apps/nautilus/preferences/show_desktop -s false
 gconftool -t bool /apps/nautilus/preferences/exit_with_last_window -s true
 gconftool -t bool /apps/nautilus/preferences/media_automount -s false
+gconftool -t bool /apps/nautilus/preferences/always_use_location_entry -s true
 
 #Other
 gconftool -t bool /desktop/gnome/background/draw_background -s false
