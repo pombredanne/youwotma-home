@@ -29,7 +29,7 @@ bind H exec ratopen transmission-gtk
 bind g exec ratopen gvim gvim
 bind ntilde exec wicd-client -n
 bind Ntilde exec gnome-control-center
-bind q exec feh /home/carl/dev/uma/horario
+bind q exec feh /home/carl/dev/youwotma-home/dev/scripts/horario
 bind h nextscreen
 
 #Volumen
