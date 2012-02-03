@@ -34,4 +34,5 @@ confirm "marcar como visto" && {
     else
         echo "seen" > "$1"
     fi
+    rm "$sub"
 }
