@@ -1,3 +1,3 @@
 #!/bin/sh
 
-chromium-browser --remote-debugging-port=9222 $@
+chromium-browser --disable-web-security --remote-debugging-port=9222 $@
