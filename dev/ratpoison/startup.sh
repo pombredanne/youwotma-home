@@ -5,9 +5,13 @@ st=" "
 
 /home/carl/dev/ratpoison/wallpaper.sh &
 
-sudo /home/carl/dev/ratpoison/startup-root.sh
+/home/carl/dev/ratpoison/xflux  -l 36.6 -g -4.5
 
-firefox &
+set +e
+sudo /home/carl/dev/ratpoison/startup-root.sh
+set -e
+
+/usr/bin/firefox &
 
 if [ `cat /home/carl/.pcname` == "portatil" ]
 then
