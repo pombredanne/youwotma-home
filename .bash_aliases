@@ -5,6 +5,18 @@ ranger() {
    cd "$(grep \^\' ~/.config/ranger/bookmarks | cut -b3-)"
 }
 
+o(){
+    if [ $# = 0 ]
+    then
+        nautilus --no-desktop "`pwd`"
+    elif [ -d "$1" ]
+    then
+        nautilus --no-desktop "$1"
+    else
+        gnome-open "$1"
+    fi
+}
+
 
 # Para abrir nuevos buffers en una nueva pestaña de una instancia ya 
 # abierta de gvim
