@@ -1,0 +1,138 @@
+#!/usr/bin/env python
+
+import os,sys
+import struct
+import subprocess
+from xmlrpclib import ServerProxy
+from BeautifulSoup import BeautifulSoup
+import urllib, urllib2
+
+
+def hashFile(name):
+    longlongformat = 'q'  # long long
+    bytesize = struct.calcsize(longlongformat)
+
+    f = open(name, "rb")
+
+    filesize = os.path.getsize(name)
+    hash = filesize
+
+    if filesize < 65536 * 2:
+        print "File too small"
+        sys.exit(1)
+
+    for x in range(65536/bytesize):
+        buffer = f.read(bytesize)
+        (l_value,)= struct.unpack(longlongformat, buffer)
+        hash += l_value
+        hash = hash & 0xFFFFFFFFFFFFFFFF #to remain as 64bit number
+
+    f.seek(max(0,filesize-65536),0)
+    for x in range(65536/bytesize):
+        buffer = f.read(bytesize)
+        (l_value,)= struct.unpack(longlongformat, buffer)
+        hash += l_value
+        hash = hash & 0xFFFFFFFFFFFFFFFF
+
+    f.close()
+    returnedhash =  "%016x" % hash
+    return returnedhash
+
+if len(sys.argv) != 2:
+    print "Usage: download_subs file"
+    sys.exit(1)
+
+peli = sys.argv[1]
+subFileName = os.path.join(
+        os.path.dirname(peli),
+        os.path.splitext(os.path.basename(peli))[0] + ".srt"
+    )
+
+try:
+    from flexget.utils.titles import SeriesParser
+    name = os.path.basename(peli)
+
+    for serie in (
+    'Chuck',
+    'House',
+    'How I met your mother',
+    'The big bang theory',
+    'The simpsons',
+    'American Dad',
+    'Family Guy',
+    'Dexter',
+    'Game of thrones',
+    'True Blood',
+    'Fringe',
+    'The IT Crowd',
+    'Futurama',):
+        sp = SeriesParser(name=serie)
+        sp.parse(name)
+        if sp.season is not None and sp.episode is not None:
+            hypen_name = "-".join(serie.lower().split())
+            print "searching subs.es for", hypen_name, sp.season,sp.episode
+            sopa = BeautifulSoup(urllib.urlopen("http://www.subtitulos.es/%s/%sx%s" % (hypen_name,sp.season,sp.episode)))
+            for div in sopa("li",{"class":"li-idioma"}):
+                if div(text=lambda x:x.lower().find("english") >= 0):
+                    link = div.findNext(text=["m&aacute;s actualizado","descargar"])
+                    if link.parent.name == "a":
+                        url = link.parent["href"]
+                    elif link.parent.parent.name == "a":
+                        url = link.parent.parent["href"]
+                    if url:
+                        print "downloading", url, "to", subFileName
+                        req = urllib2.Request(url, headers={'Referer' : url, 'User-Agent' : 'Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.1.3)'})
+                        f = urllib2.urlopen(req)
+                        dump = open(subFileName, "wb")
+                        dump.write(f.read())
+                        dump.close()
+                        f.close()
+                        sys.exit(0)
+except ImportError, ex:
+    print "subtitulos.es downloaded failed", ex
+
+server = ServerProxy("http://api.opensubtitles.org/xml-rpc")
+hash = hashFile(peli)
+size = os.path.getsize(peli)
+session =  server.LogIn("","","en","moviejukebox 1.0.15")
+token = session["token"]
+subs = server.SearchSubtitles(token, [{'moviehash':hash,'moviebytesize':str(size)}])
+
+if ("data" not in subs) or (not subs["data"]):
+    print "Sin resultados"
+    sys.exit(1)
+
+subs = subs["data"]
+print "Search yielded %s results" % len(subs)
+good_subs = filter(lambda x: x["LanguageName"] in ("Spanish","English"), subs)
+if len(good_subs) > 0:
+    subs = good_subs
+    print "only showing %s results in your language" % len(subs)
+
+dialog_items = []
+for i,sub in zip(range(len(subs)),subs):
+    dialog_items += [str(i),sub['SubFileName'],sub['LanguageName']]
+
+args = ['zenity','--list','--width=600','--height=400','--text=Select subtitle',]
+args += ['--column=N','--column=File name','--column=Lang']
+
+resp = subprocess.Popen(args + dialog_items,stdout=subprocess.PIPE).communicate()[0].strip('\n')
+
+if resp == '':
+    print "Zenity dialog cancelled"
+    sys.exit(1)
+
+sub = subs[int(resp)]
+
+print "downloading to " + subFileName
+subDirName = os.path.dirname(peli)
+subURL = sub['SubDownloadLink']
+
+file = open(os.path.join(subDirName,subFileName),"wb")
+wget = subprocess.Popen(["wget","-O","-",subURL],stdout=subprocess.PIPE)
+response = subprocess.call(["gunzip"],stdin=wget.stdout,stdout=file)
+
+if response != 0:
+    print "wget failed"
+    sys.exit(1)
+

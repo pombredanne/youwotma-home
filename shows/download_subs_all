@@ -1,0 +1,13 @@
+#!/bin/bash
+
+find /var/lib/transmission-daemon/downloads/ -size +100M -and \( -iname "*.avi" -or -iname "*.mkv" -or -iname "*.mp4" \) | while read show
+do
+    sub=${show%.*}.srt
+
+    if [ ! -e "$sub" ] || [ `stat -c%s "$sub"` -lt 10 ]
+    then
+        print "-- Downloading subs for $show"
+        download_subs "$show"
+    fi
+done
+
