@@ -1,15 +1,15 @@
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
+[submodule "dotfiles/.vim/bundle/nerdtree"]
+	path = dotfiles/.vim/bundle/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/scss"]
-	path = .vim/bundle/scss
-	url = http://github.com/cakebaker/scss-syntax.vim.git
-[submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
+[submodule "dotfiles/.vim/bundle/scss"]
+	path = dotfiles/.vim/bundle/scss
+	url = http://github.com/cakebaker/scss-syntaxdotfiles/.vim.git
+[submodule "dotfiles/.vim/bundle/vim-coffee-script"]
+	path = dotfiles/.vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/vim-less"]
-	path = .vim/bundle/vim-less
+[submodule "dotfiles/.vim/bundle/vim-less"]
+	path = dotfiles/.vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
-[submodule ".vim/bundle/gundo"]
-	path = .vim/bundle/gundo
+[submodule "dotfiles/.vim/bundle/gundo"]
+	path = dotfiles/.vim/bundle/gundo
 	url = https://github.com/vim-scripts/Gundo.git
