@@ -22,52 +22,40 @@ bak(){
 }
 lnbak(){
     destination="$GIT_ROOT/$2$1"
-    if [ -L $1 ]
-    then
-        if [ x`readlink $1` == "x$destination" ]
-        then
-            echo "$PREOK Enlace simbolico ya existente y correcto: $1"
-        else
-            echo "$PREOK Enlace simbolico $1 apuntando a "`readlink $1`", cambiando a $destination"
-            rm -I $1
-            ln -s $destination $1
-        fi
-    else
-    	bak $1
-        ln -s $destination $1
-    fi
+    mkln "$destination" "$1"
 }
 
 lnbin(){
-    prev=`pwd`
-    destination="$prev/$1"
-    cd /usr/bin/
+    mkln "$1" "/usr/bin/$2"
+}
 
-    if [ -L $2 ]
+mkln(){
+    link_target=`readlink -f "$1"`
+    link_name="$2"
+    if [ -L "$link_name" ]
     then
-        if [ x`readlink $2` == "x$destination" ]
+        if [ x`readlink "$link_name"` == "x$link_target" ]
         then
-            echo "$PREOK Enlace simbolico ya existente y correcto: $2"
+            echo "$PREOK Enlace simbolico ya existente y correcto: $link_name"
         else
-            echo "$PREOK Enlace simbolico $2 apuntando a "`readlink $2`", cambiando a $destination"
-            sudo rm $2
-            sudo ln -s $destination $2
+            echo "$PREOK Enlace simbolico $link_name apuntando a "`readlink "$link_name"`", cambiando a $link_target"
+            sudo rm "$link_name"
+            sudo ln -s "$link_target" "$link_name"
         fi
     else
-        if [ -e $2 ]
+        if [ -e "$link_name" ]
         then
-            echo "Enlace existente $2, Borrar?"
-            sudo rm -i $2
+            echo "Archivo existente $link_name, Borrar?"
+            sudo rm -i "$link_name"
         fi
 
-        if [ -e $2 ]
+        if [ -e "$link_name" ]
         then
-            echo "$PREFAIL Archivo existente $2"
+            echo "$PREFAIL Archivo existente $link_name"
         else
-            echo "$PREOK Creando enlace $2"
-            sudo ln -s $destination $2
+            echo "$PREOK Creando enlace $link_name"
+            sudo ln -s "$link_target" $link_name
         fi
     fi
-    cd "$prev"
 }
 
