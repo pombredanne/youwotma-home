@@ -11,15 +11,6 @@ fi
 
 cd ~
 
-lnbak .bashrc
-lnbak .ratpoisonrc
-lnbak .vim
-lnbak .vimperatorrc
-lnbak .vimperator
-lnbak .vimrc
-lnbak .bash_aliases
-lnbak .inputrc
-
 [ ! -d dev ] && mkdir dev
 
 cd "$GIT_ROOT/dev"
