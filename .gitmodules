@@ -3,7 +3,7 @@
 	url = http://github.com/scrooloose/nerdtree.git
 [submodule "dotfiles/.vim/bundle/scss"]
 	path = dotfiles/.vim/bundle/scss
-	url = http://github.com/cakebaker/scss-syntaxdotfiles/.vim.git
+	url = https://github.com/cakebaker/scss-syntax.vim.git
 [submodule "dotfiles/.vim/bundle/vim-coffee-script"]
 	path = dotfiles/.vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
