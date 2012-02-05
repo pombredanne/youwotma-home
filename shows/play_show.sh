@@ -24,7 +24,13 @@ ratpoison -c 'hsplit'
 ratpoison -c 'focusright'
 
 sub=${show%.*}.srt
-smplayer -fullscreen -sub "$sub" "$show"
+if [ "x$PLAYER" = xmplayer ]
+then
+    mplayer "$show" -ao alsa:device=hw=0.3
+    reset
+else
+    smplayer -fullscreen -sub "$sub" "$show"
+fi
 ratpoison -c 'focusleft'
 
 confirm "marcar como visto" && {

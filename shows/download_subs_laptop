@@ -1,0 +1,16 @@
+#!/bin/bash
+
+find /home/carl/Downloads/shows/ -size +100M -and \( -iname "*.avi" -or -iname "*.mkv" -or -iname "*.mp4" \) | while read show
+do
+    if [ `stat -c%s "$show"` -gt 10 ]
+    then
+        sub=${show%.*}.srt
+
+        if [ ! -e "$sub" ] || [ `stat -c%s "$sub"` -lt 10 ]
+        then
+            print "-- Downloading subs for $show"
+            download_subs "$show"
+        fi
+    fi
+done
+
