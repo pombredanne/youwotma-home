@@ -18,6 +18,11 @@ else
     fi
 fi
 
+if [ "x$PLAYER" = x ]
+then
+    PLAYER=`zenity --list --text 'THE GAME' --column player 'smplayer' 'mplayer' 'vlc'`
+fi
+
 disper -d auto -e
 ratpoison -c 'only'
 ratpoison -c 'hsplit'
@@ -28,17 +33,29 @@ if [ "x$PLAYER" = xmplayer ]
 then
     mplayer "$show" -ao alsa:device=hw=0.3
     reset
-else
+elif [ "x$PLAYER" = xsmplayer ]
+then
     smplayer -fullscreen -sub "$sub" "$show"
+elif [ "x$PLAYER" = xvlc ]
+then
+    vlc --fullscreen --alsa-audio-device hdmi --sub-file "$sub" "$show"
+else
+    echo "invalid player $PLAYER"
 fi
+
 ratpoison -c 'focusleft'
 
-confirm "marcar como visto" && {
-    if confirm "enviar padres"
-    then
-        touch "$1".padres
-    else
-        echo "seen" > "$1"
-    fi
+
+
+ac=`zenity --list --text 'THE GAME' --column action 'nothing' 'padres' 'borrar'`
+
+if [ x"$ac" = xpadres ]
+then
+    touch "$show".padres
     rm "$sub"
-}
+elif [ x"$ac" = xborrar ]
+then
+    echo "seen" > "$show"
+    rm "$sub"
+fi
+
