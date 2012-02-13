@@ -23,7 +23,7 @@ def rat_echo(msg):
 
 def findwindow(windowname):
 	output = rat_cmd('windows %n %a')
-	
+
 	windows = output.split("\n")
 	for window in windows:
 		m = re.match("^([0-9]+) (.*)$",window)
@@ -32,20 +32,25 @@ def findwindow(windowname):
 			return int(m.group(1))
 	return -1
 
+def activewindow():
+    return int(rat_cmd("info %n"))
+
+def chwindow(wn):
+    rat_cmd("select %s" % wn)
 
 if __name__ == "__main__":
-  import sys
-  if len(sys.argv) == 3:
-    winname, command = sys.argv[1:]
-  elif len(sys.argv) == 2:
-    winname = command = sys.argv[1]
-  else:
-    print "Usage: ratopen.py winname command"
-    sys.exit()
-  
-  wn = findwindow(winname)
-  if wn >= 0:
-    rat_cmd("select %s" % wn)
-  else:
-    Popen([command])
+    import sys
+    if len(sys.argv) == 3:
+        winname, command = sys.argv[1:]
+    elif len(sys.argv) == 2:
+        winname = command = sys.argv[1]
+    else:
+        print "Usage: ratopen.py winname command"
+        sys.exit()
+
+    wn = findwindow(winname)
+    if wn >= 0:
+        chwindow(wn)
+    else:
+        Popen([command])
 

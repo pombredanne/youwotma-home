@@ -113,7 +113,7 @@ dialog_items = []
 for i,sub in zip(range(len(subs)),subs):
     dialog_items += [str(i),sub['SubFileName'],sub['LanguageName']]
 
-args = ['zenity','--list','--width=600','--height=400','--text=Select subtitle',]
+args = ['zenity','--list','--width=600','--height=400','--text=Select subtitle for ' + peli,]
 args += ['--column=N','--column=File name','--column=Lang']
 
 resp = subprocess.Popen(args + dialog_items,stdout=subprocess.PIPE).communicate()[0].strip('\n')

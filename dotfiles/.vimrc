@@ -1,6 +1,8 @@
 set showmode
 set smartindent
 
+colorscheme wombat
+
 set lazyredraw " magia
 
 " mostrar siempre la linea de estatus
@@ -99,11 +101,11 @@ set wildmenu
 " No usar los malditos archivos swap
 set noswapfile
 
+imap <C-e> <Esc>mgk$a,<Esc>`ga
+
 
 if has("gui_running")
-    au BufWritePost * :silent !/home/carl/dev/aftersave/aftersave.sh "%:p"
-    au BufWritePost *.scss !~/dev/scripts/compilescss.py <afile>
-    au BufWritePost *.less !~/dev/scripts/compileless.py <afile>
+    au BufWritePost * :silent !/home/carl/.vim/aftersave.sh "%:p"
     au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
 
 

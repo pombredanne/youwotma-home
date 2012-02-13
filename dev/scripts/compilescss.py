@@ -15,7 +15,12 @@ args = ["compass","compile",absfile,"--boring","--sass-dir",contdir,"--css-dir",
 if contdir_last == "css":
     args += ["--images-dir",os.path.join(contdir,"..","img")]
 
-subprocess.Popen(args).wait()
+p = subprocess.Popen(args,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+
+stdout, stderr = p.communicate()
+
+if p.returncode != 0:
+    subprocess.Popen(["zenity","--error","--text=" + stdout + stderr])
 
 #sys.stdin.read(1)
 
