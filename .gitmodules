@@ -13,3 +13,6 @@
 [submodule "dotfiles/.vim/bundle/gundo"]
 	path = dotfiles/.vim/bundle/gundo
 	url = https://github.com/vim-scripts/Gundo.git
+[submodule "dotfiles/.vim/bundle/syntastic"]
+	path = dotfiles/.vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
