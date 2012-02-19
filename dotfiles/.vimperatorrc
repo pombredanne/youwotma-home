@@ -16,10 +16,10 @@
 :lazy fmaps -u='127.0.0.1/dev/reddit' -events=vkeydown j k h
 
 #:map ,r :switchoropen domain (www\\.)?reddit\\.com http://reddit.com<cr>
-:map ,t :switchoropen domain (www\\.)?twitter\\.com http://twitter.com<cr>
-:map ,f :switchoropen domain (www\\.)?facebook\\.com http://facebook.com<cr>
-:map ,m :switchoropen domain mail\\.google\\.com http://mail.bengoarocandio.com<cr>
-:map ,g :switchoropen url (www\\.)?google\\.com/reader http://google.com/reader<cr>
+:map ,t :switchoropen domain (www\\.)?twitter\\.com https://twitter.com<cr>
+:map ,f :switchoropen domain (www\\.)?facebook\\.com https://facebook.com<cr>
+:map ,m :switchoropen domain mail\\.google\\.com https://mail.bengoarocandio.com<cr>
+:map ,g :switchoropen url (www\\.)?google\\.com/reader https://google.com/reader<cr>
 :map ,h :switchoropen url 127\\.0\\.0\\.1:9091 http://127.0.0.1:9091<cr>
 
 :map j :!~/dev/vimperatorscroll/scrollevent down 3<cr><esc>
