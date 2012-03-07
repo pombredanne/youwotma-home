@@ -11,6 +11,9 @@ then
     if [ x$cnts = xseen ]
     then
         echo "remove"
+    elif [ x$cnts = xpadres ]
+    then
+        echo "noop"
     else
         echo "copy"
     fi

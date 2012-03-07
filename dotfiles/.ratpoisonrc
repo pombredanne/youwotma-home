@@ -15,6 +15,7 @@ set barborder 2
 set bargravity c
 set bwcolor #ECD078
 set fwcolor #ECD078
+set resizeunit 15
 
 #Cambiar el terminal por defecto a gnome-terminal
 bind c exec ratopen gnome-terminal

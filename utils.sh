@@ -46,7 +46,7 @@ mkln(){
         if [ -e "$link_name" ]
         then
             echo "Archivo existente $link_name, Borrar?"
-            sudo rm -i "$link_name"
+            sudo rm -rfi "$link_name"
         fi
 
         if [ -e "$link_name" ]

@@ -123,6 +123,13 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=T
 
+    map <Left> <Esc>
+    map <Right> <Esc>
+    map <Up> <Esc>
+    map <Down> <Esc>
+
+    imap jj <Esc>
+
 
     " Muestra los espacios al final en rojo
     highlight ExtraWhitespace ctermbg=red guibg=red

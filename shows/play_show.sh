@@ -20,7 +20,7 @@ fi
 
 if [ "x$PLAYER" = x ]
 then
-    PLAYER=`zenity --list --text 'THE GAME' --column player 'smplayer' 'mplayer' 'vlc'`
+    PLAYER=`zenity --list --text 'THE GAME' --column player 'smplayer' 'mplayer' 'vlc' 'skip'`
 fi
 
 disper -d auto -e
@@ -31,14 +31,17 @@ ratpoison -c 'focusright'
 sub=${show%.*}.srt
 if [ "x$PLAYER" = xmplayer ]
 then
-    mplayer "$show" -ao alsa:device=hw=0.3
+    mplayer "$show" -fstype fullscreen -ao alsa:device=hw=0.3
     reset
 elif [ "x$PLAYER" = xsmplayer ]
 then
-    smplayer -fullscreen -sub "$sub" "$show"
+    smplayer -close-at-end -fullscreen -sub "$sub" "$show"
 elif [ "x$PLAYER" = xvlc ]
 then
-    vlc --fullscreen --alsa-audio-device hdmi --sub-file "$sub" "$show"
+    vlc --fullscreen --play-and-exit --alsa-audio-device hdmi --sub-file "$sub" "$show"
+elif [ "x$PLAYER" = xskip ]
+then
+    echo "Skipping playing..."
 else
     echo "invalid player $PLAYER"
 fi
@@ -47,15 +50,19 @@ ratpoison -c 'focusleft'
 
 
 
-ac=`zenity --list --text 'THE GAME' --column action 'nothing' 'padres' 'borrar'`
+ac=`zenity --list --text 'THE GAME' --column action 'nothing' 'padres' 'borrar' 'ver'`
 
 if [ x"$ac" = xpadres ]
 then
-    touch "$show".padres
     rm "$sub"
+    mv "$show" padres
+    echo "padres" > show
 elif [ x"$ac" = xborrar ]
 then
     echo "seen" > "$show"
     rm "$sub"
+elif [ x"$ac" = xver ]
+then
+    PLAYER="$PLAYER" play_show "$show"
 fi
 
