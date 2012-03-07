@@ -13,6 +13,7 @@ lnhome .vimrc
 lnhome .bash_aliases
 lnhome .inputrc
 lnhome .sqliterc
+lnhome .wgetrc
 mkdir -p ~/.config/
 lnhome .config/ranger
 
