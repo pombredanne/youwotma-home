@@ -42,13 +42,18 @@ def wait_wpa(finstatus="COMPLETED"):
     time.sleep(1)
   return False
 
-
-
 def dhcpd():
   rat.rat_echo("DHCP discover...")
   dhc = Popen(["dhclient","wlan0"],stdout=PIPE,stderr=PIPE)
   rat.rat_echo(dhc.stdout.read() + dhc.stderr.read())
 
+
+proxy_actions = []
+def proxyaction(act):
+    proxy_actions.append(act)
+    return act
+
+@proxyaction
 def firefox_proxy(on):
   if on:
     cmd = "proxyon"
@@ -63,53 +68,50 @@ def firefox_proxy(on):
   s.send(cmd + "\n")
   s.close()
 
+def sed_proxy(on, offcmd, oncmd, file):
+    foo = ["sed", "-i"]
+    if on:
+        foo += [oncmd]
+    else:
+        foo += [offcmd]
+    foo += [file]
+    Popen(foo).wait()
 
+@proxyaction
 def wget_proxy(on):
-    foo = ["sed", "-i"]
-    if on:
-        foo += ["s/^use_proxy/#use_proxy/"]
-    else:
-        foo += ["s/^#use_proxy/use_proxy/"]
-    foo += ["/etc/wgetrc"]
-    Popen(foo).read()
+    sed_proxy(on,"s/^use_proxy/#use_proxy/","s/^#use_proxy/use_proxy/","/home/carl/.wgetrc")
 
-
+@proxyaction
 def apt_proxy(on):
-    foo = ["sed", "-i"]
-    if on:
-        foo += ["s/^\/\/Acquire::http::Proxy/Acquire::http::Proxy/"]
-    else:
-        foo += ["s/^Acquire::http::Proxy/\/\/Acquire::http::Proxy/"]
-    foo += ["/etc/apt/apt.conf.d/95proxy"]
-    Popen(foo).read()
+    sed_proxy(on,"s/^\/\/Acquire::http::Proxy/Acquire::http::Proxy/","s/^Acquire::http::Proxy/\/\/Acquire::http::Proxy/","/etc/apt/apt.conf.d/95proxy")
 
+@proxyaction
+def s3_proxy(on):
+    sed_proxy(on,"s/^proxy/#proxy/","s/^#proxy/proxy/","/home/carl/.s3cfg")
+
+@proxyaction
+def svn_proxy(on):
+    sed_proxy(on,"s/^http-proxy/#http-proxy/","s/^#http-proxy/http-proxy/","/home/carl/.subversion/servers")
 
 def proxy(on):
-  try:
-    firefox_proxy(on)
-  except:
-    pass
-  try:
-      wget_proxy(on)
-  except:
-    pass
-  try:
-      apt_proxy(on)
-  except:
-    pass
+    for f in proxy_actions:
+        try:
+            f(on)
+        except Exception, ex:
+            print ex
 
-  for protocol in ("http","https","ftp"):
-    remp = {"p":protocol,"P":protocol.upper()}
-    if on:
-      rat.rat_cmd("setenv %(p)s_proxy %(p)s://proxy.alu.uma.es:3128/" % remp)
-      rat.rat_cmd("setenv %(P)s_PROXY %(p)s://proxy.alu.uma.es:3128/" % remp)
-    else:
-      rat.rat_cmd("unsetenv %(p)s_proxy" % remp)
-      rat.rat_cmd("unsetenv %(P)s_PROXY" % remp)
-  f = open("/home/carl/.proxy","w")
-  if on:
-    f.write("proxy.alu.uma.es:3128")
-  f.close()
+    for protocol in ("http","https","ftp"):
+        remp = {"p":protocol,"P":protocol.upper()}
+        if on:
+            rat.rat_cmd("setenv %(p)s_proxy %(p)s://proxy.alu.uma.es:3128/" % remp)
+            rat.rat_cmd("setenv %(P)s_PROXY %(p)s://proxy.alu.uma.es:3128/" % remp)
+        else:
+            rat.rat_cmd("unsetenv %(p)s_proxy" % remp)
+            rat.rat_cmd("unsetenv %(P)s_PROXY" % remp)
+        f = open("/home/carl/.proxy","w")
+        if on:
+            f.write("proxy.alu.uma.es:3128")
+        f.close()
 
 
 if __name__ == "__main__":
