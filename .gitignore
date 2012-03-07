@@ -1,4 +1,5 @@
 *.pyc
+*.pyo
 dotfiles/.vimperator/info/*
 dotfiles/.config/ranger/history
 dotfiles/.config/ranger/bookmarks
