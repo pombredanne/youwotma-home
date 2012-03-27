@@ -83,7 +83,7 @@ def wget_proxy(on):
 
 @proxyaction
 def apt_proxy(on):
-    sed_proxy(on,"s/^\/\/Acquire::http::Proxy/Acquire::http::Proxy/","s/^Acquire::http::Proxy/\/\/Acquire::http::Proxy/","/etc/apt/apt.conf.d/95proxy")
+    sed_proxy(on,"s?^Acquire::http::Proxy?//Acquire::http::Proxy?","s?^//Acquire::http::Proxy?Acquire::http::Proxy?","/etc/apt/apt.conf.d/95proxy")
 
 @proxyaction
 def s3_proxy(on):
