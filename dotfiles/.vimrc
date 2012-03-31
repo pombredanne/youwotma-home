@@ -101,9 +101,6 @@ set wildmenu
 " No usar los malditos archivos swap
 set noswapfile
 
-imap <C-e> <Esc>mgk$a,<Esc>`ga
-
-
 if has("gui_running")
     au BufWritePost * :silent !/home/carl/.vim/aftersave.sh "%:p"
     au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
