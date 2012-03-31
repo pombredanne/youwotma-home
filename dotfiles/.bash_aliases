@@ -18,6 +18,10 @@ o(){
 }
 
 
+killwicd(){
+    kill -9 `ps -A -f | grep wicd | grep -v grep | awk '{ print $2 }'`
+}
+
 # Para abrir nuevos buffers en una nueva pestaña de una instancia ya 
 # abierta de gvim
 alias gvim='gvim --remote-tab-silent'
