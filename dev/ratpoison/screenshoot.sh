@@ -5,9 +5,9 @@ scrot -q 100 -d 01 "$fn"
 ratpoison -c "echo Screenshot saved!"
 /home/carl/dev/ratpoison/crop.py "$fn"
 
-accion=`zenity --list --column 'accion' 'imgur' 'twitpic' 'portapapeles' 'inspiracion' 'ver'`
+prompt(){
 
-
+accion=`zenity --list --column 'accion' 'imgur' 'twitpic' 'portapapeles' 'inspiracion' 'ver' 'gimp'`
 
 if [ "$accion" = "twitpic" ]
 then
@@ -31,4 +31,12 @@ then
 elif [ "$accion" = "ver" ]
 then
   display "$fn"
+elif [ "$accion" = "gimp" ]
+then
+  gimp "$fn"
+  prompt
 fi
+
+}
+prompt
+
