@@ -22,7 +22,7 @@ sshp(){
 }
 
 cd /var/lib/transmission-daemon/downloads/
-find . -size +100M -and \( -iname "*.avi" -or -iname "*.mkv" -or -iname "*.mp4" \) | while read show
+find . -size +50M -and \( -iname "*.avi" -or -iname "*.mkv" -or -iname "*.mp4" \) | while read show
 do
     sub=${show%.*}.srt
     name=`basename "$show"`
