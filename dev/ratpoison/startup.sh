@@ -3,7 +3,6 @@ set -e
 
 st=" "
 
-/home/carl/dev/TagTime/tagtimed.pl &
 /home/carl/dev/ratpoison/wallpaper.sh &
 
 /home/carl/dev/ratpoison/xflux  -l 36.6 -g -4.5
