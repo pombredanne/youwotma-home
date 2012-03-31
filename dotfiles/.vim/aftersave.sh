@@ -13,8 +13,10 @@ then
     restart-browsers
 elif [[ $1 == /home/carl/dev/instabed/* ]]
 then
-    echo yeep >> ~/tmp/tmp
     restart-browsers
+#elif [[ $1 == /home/carl/dev/throuthemirror/* ]]
+#then
+    #restart-browsers
 elif [[ $1 == /home/carl/dev/4sq/* ]]
 then
     scp $1 hoyga:/var/www/4sq &
