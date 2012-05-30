@@ -120,10 +120,20 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=T
 
-    map <Left> <Esc>
-    map <Right> <Esc>
-    map <Up> <Esc>
-    map <Down> <Esc>
+    nnoremap <Left> <<
+    nnoremap <Right> >>
+    nnoremap <Up> gt
+    nnoremap <Down> gT
+
+    vnoremap <Left> <gv
+    vnoremap <Right> >gv
+    vnoremap <Up> :m -2<Enter>gv
+    vnoremap <Down> :m '>+1<Enter>gv
+
+    inoremap <Up> <C-o>dd<C-o>k<C-o>P
+    inoremap <Down> <C-o>dd<C-o>p
+    inoremap <Left> <Home>
+    inoremap <Right> <End>
 
     imap jj <Esc>
 
