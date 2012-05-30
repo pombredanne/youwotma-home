@@ -1,7 +1,7 @@
 #!/bin/sh
 confirm "install firefox/thunderbird" && {
 
-    FIREFOX_URL=`python mozurl.py firefox nightly`
+    FIREFOX_URL=`python mozurl.py firefox aurora`
     THUNDER_URL=`python mozurl.py thunderbird aurora`
 
     cd ~/tmp/
