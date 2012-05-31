@@ -130,11 +130,6 @@ if has("gui_running")
     vnoremap <Up> :m -2<Enter>gv
     vnoremap <Down> :m '>+1<Enter>gv
 
-    inoremap <Up> <C-o>dd<C-o>k<C-o>P
-    inoremap <Down> <C-o>dd<C-o>p
-    inoremap <Left> <Home>
-    inoremap <Right> <End>
-
     imap jj <Esc>
 
 
