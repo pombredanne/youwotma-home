@@ -712,7 +712,7 @@
 "traceroute":"http%3A//dns-tools.domaintools.com/%3Fmethod%3Dtraceroute%26query%3DPLACEHOLDER",
 "anime":"http%3A//anidb.net/perl-bin/animedb.pl%3Fshow%3Danimelist%26adb.search%3DPLACEHOLDER%26do.search%3Dsearch",
 "yeahway":"http%3A//yeahway.com/parser/run.php%3Fquery%3DPLACEHOLDER",
-"gt":"https%3A//translate.google.com/%23auto%7Cen%7CPLACEHOLDER",
+"gt":"http%3A//translate.google.com/%23auto%7Cen%7CPLACEHOLDER",
 "market":"https%3A//market.android.com/search%3Fq%3DPLACEHOLDER%26c%3Dapps",
 "gsmarena":"http%3A//www.gsmarena.com/results.php3%3FsName%3DPLACEHOLDER",
 "g":"https%3A//www.google.com/search%3Fhl%3Den%26q%3DPLACEHOLDER",
