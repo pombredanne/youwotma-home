@@ -22,8 +22,8 @@ bind c exec ratopen gnome-terminal
 bind y exec ratopen Navigator firefox
 #bind y exec ratopen chrome chromium-bin
 bind T exec ratopen Mail thunderbird
-bind B exec ratopen Banshee banshee
-bind E exec ratopen skype skype
+bind B exec ratopen gmpc
+bind E exec skype-open
 #bind W exec ratopen empathy empathy
 bind W exec ratopen pidgin pidgin
 bind H exec ratopen transmission-gtk
@@ -46,9 +46,10 @@ definekey top XF86AudioStop exec banshee --stop
 definekey top s-Up exec dev/ratpoison/volumen.sh up
 definekey top s-Down exec dev/ratpoison/volumen.sh down
 definekey top s-End exec dev/ratpoison/volumen.sh mute
-definekey top s-Right exec banshee --next
-definekey top s-Left exec banshee --restart-or-previous
-definekey top s-Delete exec banshee --toggle-playing
+definekey top s-Right exec ratpoison -c "echo $(mpc next)"
+definekey top s-Left exec ratpoison -c "echo $(mpc prev)"
+definekey top s-Delete exec ratpoison -c "echo $(mpc toggle)"
+definekey top s-Insert exec ratpoison -c "echo $(mpc)"
 
 #look of dissaprovalstartup-root.sh
 definekey top s-l exec dev/ratpoison/lookofdissaproval.sh
