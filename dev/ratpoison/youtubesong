@@ -17,3 +17,5 @@ rm "$fn"
 id3v2 --artist "$artist" --album "$album" --song "$name" "$mpfile"
 mp3gain -r $mpfile
 mv "$mpfile" /home/carl/Musica/
+
+echo "$mpfile" >> /home/carl/Musica/playlist/nuevas.m3u
