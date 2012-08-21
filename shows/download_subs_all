@@ -1,6 +1,6 @@
 #!/bin/bash
 
-find /var/lib/transmission-daemon/downloads/ -size +100M -and \( -iname "*.avi" -or -iname "*.mkv" -or -iname "*.mp4" -or -iname "*.3gp" \) | while read show
+find /var/lib/transmission-daemon/downloads/ -size +20M -and \( -iname "*.avi" -or -iname "*.mkv" -or -iname "*.mp4" -or -iname "*.3gp" \) | while read show
 do
     sub=${show%.*}.srt
 
