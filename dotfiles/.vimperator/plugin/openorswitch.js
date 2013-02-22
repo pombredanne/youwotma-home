@@ -6,20 +6,6 @@
 //     http://www.opensource.jp/licenses/mit-license.html
 // }}}
 //
-// PLUGIN INFO: {{{
-var PLUGIN_INFO =
-<VimperatorPlugin>
-  <name>openorswitch</name>
-  <description>Abre o cambioa a una pagina.</description>
-  <minVersion>2.3pre</minVersion>
-  <maxVersion>2.3</maxVersion>
-  <license>MIT style license</license>
-  <version>0.10.2</version>
-  <detail><![CDATA[
-    Foobar
-  ]]></detail>
-</VimperatorPlugin>;
-// }}}
 
 function getTabArg(tab,arg){
     try{

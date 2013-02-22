@@ -30,4 +30,7 @@ gconftool -t float /apps/gnome-terminal/profiles/Default/background_darkness -s 
 gconftool -t bool /apps/gnome-terminal/profiles/Default/use_theme_colors -s false
 gconftool -t bool /apps/gnome-terminal/profiles/Default/login_shell -s true
 
+gsettings set org.gnome.settings-daemon.plugins.sound active false
+gsettings set org.gnome.settings-daemon.plugins.mouse active false
+
 

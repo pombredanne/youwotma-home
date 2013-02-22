@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/carl'
 let g:netrw_dirhist_2='/home/carl/dev/emailrobot'
 let g:netrw_dirhist_3='/var/log'
+let g:netrw_dirhist_4='/etc/transmission-daemon'
+let g:netrw_dirhist_5='/home/carl/dev/nodewebirc/static'
+let g:netrw_dirhist_6='/home/carl/dev/fbbirthday'
+let g:netrw_dirhist_7='/home/carl/Dropbox/ITE'

@@ -7,8 +7,7 @@
 // }}}
 //
 // PLUGIN INFO: {{{
-var PLUGIN_INFO =
-<VimperatorPlugin>
+var PLUGIN_INFO = xml`<VimperatorPlugin>
   <name>proxy</name>
   <description>proxy commands.</description>
   <minVersion>2.3pre</minVersion>
@@ -18,7 +17,7 @@ var PLUGIN_INFO =
   <detail><![CDATA[
     Foobar
   ]]></detail>
-</VimperatorPlugin>;
+</VimperatorPlugin>`;
 // }}}
 var vimp_server_started = false;
 

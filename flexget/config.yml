@@ -1,0 +1,21 @@
+tasks:
+  shows:
+    rss: http://showrss.karmorra.info/feeds/all.rss
+    series:
+      - House
+      - How I met your mother
+      - The big bang theory
+      - The simpsons
+      - American Dad
+      - Family Guy
+      - Dexter
+      - Game of thrones
+      - True Blood
+      - Fringe
+      - The IT Crowd
+      - Futurama
+    transmission:
+      addpaused: No
+      ratio: 1
+
+presets: {}

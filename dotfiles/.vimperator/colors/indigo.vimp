@@ -62,20 +62,14 @@ hi HintActive           background-color: #5566bb; color: #dddded;
 hi HintImage            opacity: .5;
 
 js <<EOM
-var css = <css><![CDATA[
+
+/* START
 #liberator-customize-toolbar {
     -moz-box-align: center !important;
     -moz-box-pack: center !important;
     -moz-appearance: none !important;
 }
 
-/*
-#liberator-customize-toolbar toolbarbutton,
-#liberator-customize-toolbar statusbarpanel {
-    padding: 0 0 0 2px !important;
-}*/
-
-/* sbmcommentsviewer.js */
 .liberator-sbmcommentsviewer-content {
     padding: 0 !important;
     border: none !important;
@@ -108,7 +102,6 @@ var css = <css><![CDATA[
 .tabbrowser-tab{
     font-family: monospace;
     min-height: 20px !important;
-    /*min-width: 0px !important;*/
 }
 
 .tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {
@@ -120,8 +113,63 @@ var css = <css><![CDATA[
     -moz-margin-start: 0px !important;
 }
 
-]]></css>.toString();
+FIN*/
+
+var css = [
+
+"#liberator-customize-toolbar {",
+"    -moz-box-align: center !important;",
+"    -moz-box-pack: center !important;",
+"    -moz-appearance: none !important;",
+"}",
+"",
+".liberator-sbmcommentsviewer-content {",
+"    padding: 0 !important;",
+"    border: none !important;",
+"}",
+"",
+"#TabsToolbar{",
+"    font-size: 12px;",
+"    height: 20px;",
+"    background: #1c1c1c !important;",
+"    color: #ccc !important;",
+"    padding: 0 !important;",
+"}",
+"",
+"#tabbrowser-tabs tab{",
+"    border: solid #ccc !important;",
+"    border-width: 0px 1px !important;",
+"    background: #444444 !important;",
+"    padding: 0 !important;",
+"    margin: 0 !important;",
+"    -moz-border-radius: 0 !important;",
+"}",
+"#tabbrowser-tabs tab[selected=true]{",
+"    background: #ccc !important;",
+"    color: #1c1c1c !important;",
+"}",
+"#tabbrowser-tabs .tab-close-button{",
+"    display:none !important;",
+"}",
+"",
+".tabbrowser-tab{",
+"    font-family: monospace;",
+"    min-height: 20px !important;",
+"}",
+"",
+".tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned] {",
+"    position:static !important;",
+"    -moz-margin-start: 0px !important;",
+"",
+"}",
+"#tabbrowser-tabs {",
+"    -moz-margin-start: 0px !important;",
+"}",
+""].join("\n");
+
+
 styles.addSheet(false, "indigo-customize-toolbar", "chrome://*", css, false);
+
 EOM
 
 " vim: ft=vimperator

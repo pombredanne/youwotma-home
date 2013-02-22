@@ -32,6 +32,7 @@ bind ntilde exec wicd-client -n
 bind Ntilde exec gnome-control-center
 bind q exec feh /home/carl/dev/youwotma-home/dev/scripts/horario
 bind h nextscreen
+bind less exec killall -r plugin-container
 
 #Volumen
 definekey top XF86AudioRaiseVolume exec dev/ratpoison/volumen.sh up
@@ -64,7 +65,7 @@ bind a exec dev/ratpoison/relog.sh
 bind t exec ratpoison -c "echo `acpi -V`"
 
 #captura de pantalla
-bind Print exec dev/ratpoison/screenshoot.sh
+bind Insert exec dev/ratpoison/screenshoot.sh
 
 bind C-n cnext
 bind C-p cpre

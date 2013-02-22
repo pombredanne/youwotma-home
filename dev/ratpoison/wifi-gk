@@ -1,6 +1,14 @@
 #!/bin/sh
 
-action=`zenity --list --text 'THE GAME' --column accion 'uma' 'casa' 'proxy on' 'apagar' 'servidores' 'reboot' 'proxy off'`
+
+
+ACTS="apagar dropbox uma casa proxy_on servidores reboot proxy_off"
+if [ x`cat ~/.pcname` = xlaptop ]
+then
+    ACTS="hibernate $ACTS"
+fi
+
+action=`zenity --list --text 'THE GAME' --column accion $ACTS`
 wifi_cmd='/home/carl/dev/ratpoison/wifi.py'
 if [ "$action" = "uma" ]
 then
@@ -8,21 +16,24 @@ then
 elif [ "$action" = "casa" ]
 then
   $wifi_cmd casa
-elif [ "$action" = "proxy on" ]
+elif [ "$action" = "proxy_on" ]
 then
   $wifi_cmd proxy
-elif [ "$action" = "proxy off" ]
+elif [ "$action" = "proxy_off" ]
 then
   $wifi_cmd noproxy
 elif [ "$action" = "apagar" ]
 then
   init 0
+elif [ "$action" = "dropbox" ]
+then
+  su carl -c '~/.dropbox-dist/dropboxd'
 elif [ "$action" = "reboot" ]
 then
   init 6
-elif [ "$action" = "suspender" ]
+elif [ "$action" = "hibernate" ]
 then
-  hibernate
+  s2disk
 elif [ "$action" = "servidores" ]
 then
   /etc/init.d/apache2 start

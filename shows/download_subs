@@ -65,6 +65,7 @@ try:
     'True Blood',
     'Fringe',
     'The IT Crowd',
+    'Breaking Bad',
     'Futurama',):
         sp = SeriesParser(name=serie)
         sp.parse(name)
@@ -88,7 +89,7 @@ try:
                         dump.close()
                         f.close()
                         sys.exit(0)
-except ImportError, ex:
+except Exception, ex:
     print "subtitulos.es downloaded failed", ex
 
 server = ServerProxy("http://api.opensubtitles.org/xml-rpc")

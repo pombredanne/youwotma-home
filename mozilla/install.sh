@@ -1,4 +1,6 @@
 #!/bin/sh
+
+
 confirm "install firefox/thunderbird" && {
 
     FIREFOX_URL=`python mozurl.py firefox aurora`

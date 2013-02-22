@@ -1,19 +1,53 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 cd /home/carl/tmp
 
-fn=`echo "$1" | base64`
-name=$2
-artist=$3
-album=$4
+fn=`mktemp`
+
+
+mkfifo "$fn.pipe"
+
+{
+    youtube-dl --write-info-json -o "$fn.yt" "$1"
+    echo "download finished" > "$fn.pipe"
+    rm "$fn.pipe"
+} &
+
+while [ ! -e "$fn.yt.info.json" ] && [ -e "$fn.pipe" ]
+do
+    sleep 0.2
+done
+
+python -c '
+import json,sys
+obj=json.load(open("'"$fn"'.yt.info.json","r"))
+print obj["title"].encode("utf-8")
+print
+print "1) Artist, 2) Title, 3) Album"
+print obj["description"].encode("utf-8")
+' > "$fn.edit"
+
+gvim --nofork "$fn.edit"
+
+
+{
+    read artist
+    read name
+    read album
+} < "$fn.edit"
+
+if [ -e "$fn.pipe" ]
+then
+    cat "$fn.pipe"
+fi
+
 mpfile=`echo "$name-$artist.mp3" | sed -r 's/[^-a-zA-Z0-9\.]/_/g'`
 
+avconv -i "$fn.yt" "$mpfile"
 
-youtube-dl -o "$fn" "$1"
-ffmpeg -i "$fn" "$mpfile"
-rm "$fn"
+rm "$fn" "$fn.yt" "$fn.yt.info.json" "$fn.edit"
 id3v2 --artist "$artist" --album "$album" --song "$name" "$mpfile"
 mp3gain -r $mpfile
 mv "$mpfile" /home/carl/Musica/
