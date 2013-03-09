@@ -14,6 +14,9 @@ o(){
     fi
 }
 
+# J2
+export JPY=/home/carl/dev/youwotma-home/j2/j.py
+/home/carl/dev/youwotma-home/j2/j.sh          # provides the j() function
 
 killwicd(){
     kill -9 `ps -A -f | grep wicd | grep -v grep | awk '{ print $2 }'`
