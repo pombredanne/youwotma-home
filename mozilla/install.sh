@@ -28,6 +28,9 @@ confirm "install firefox/thunderbird" && {
     sudo ln -s ../lib/firefox/firefox firefox
 
     sudo aptitude hold firefox || echo "holding firefox failled"
+    sudo aptitude hold firefox-gnome-support || echo "holding firefox failled"
+    sudo aptitude hold firefox-globalmenu || echo "holding firefox failled"
+    sudo aptitude hold firefox-locale-en || echo "holding firefox failled"
     sudo aptitude hold thunderbird || echo "holding thunderbird failled"
 
     sudo update-alternatives --set x-www-browser /usr/bin/firefox

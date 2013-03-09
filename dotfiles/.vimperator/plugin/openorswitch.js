@@ -30,9 +30,11 @@ commands.addUserCommand ("switchoropen", "Switch or open",
                     return;
                 }
             }
-            var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-            var uri = ios.newURI(args[2], null, null);
-            Application.activeWindow.open(uri).focus();
+            args[2].split("|").forEach(function(url){
+                var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+                var uri = ios.newURI(url, null, null);
+                Application.activeWindow.open(uri).focus();
+            });
         }
     }
 );

@@ -101,6 +101,9 @@ set wildmenu
 " No usar los malditos archivos swap
 set noswapfile
 
+
+set nostartofline
+
 if has("gui_running")
     au BufWritePost * :silent !/home/carl/.vim/aftersave.sh "%:p"
     au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
@@ -122,8 +125,8 @@ if has("gui_running")
 
     nnoremap <Left> <<
     nnoremap <Right> >>
-    nnoremap <Up> gt
-    nnoremap <Down> gT
+    nnoremap <Up> :m -2<Enter>
+    nnoremap <Down> :m +1<Enter>
 
     vnoremap <Left> <gv
     vnoremap <Right> >gv
@@ -131,6 +134,9 @@ if has("gui_running")
     vnoremap <Down> :m '>+1<Enter>gv
 
     imap jj <Esc>
+
+    map <MiddleMouse> <Nop>
+    imap <MiddleMouse> <Nop>
 
 
     " Muestra los espacios al final en rojo
@@ -158,5 +164,8 @@ if has("gui_running")
     "Cuando borro con la x, no escribir en los registros
     map x "_dl
     vmap x "_<Del>
+
+    " Fix vim-css-color en scss
+    autocmd FileType sass,scss,stylus syn cluster sassCssAttributes add=@cssColors
 
 endif

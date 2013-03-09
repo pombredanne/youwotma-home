@@ -19,7 +19,7 @@
 " :map ,r :switchoropen domain (www\\.)?reddit\\.com http://reddit.com<cr>
 :map ,t :switchoropen domain (www\\.)?twitter\\.com https://twitter.com<cr>
 :map ,f :switchoropen domain (www\\.)?facebook\\.com https://facebook.com<cr>
-:map ,m :switchoropen domain mail\\.google\\.com http://mail.bengoarocandio.com<cr>
+:map ,m :switchoropen domain mail\\.google\\.com http://mail.bengoarocandio.com|http://correo.mozilla-hispano.org<cr>
 :map ,g :switchoropen url (www\\.)?google\\.com/reader http://google.com/reader/view<cr>
 :map ,h :switchoropen url 127\\.0\\.0\\.1:9091 http://127.0.0.1:9091<cr>
 
