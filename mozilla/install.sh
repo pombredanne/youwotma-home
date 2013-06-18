@@ -1,39 +1,27 @@
 #!/bin/sh
 
-
-confirm "install firefox/thunderbird" && {
-
-    FIREFOX_URL=`python mozurl.py firefox aurora`
-    THUNDER_URL=`python mozurl.py thunderbird aurora`
-
+install_mozilla(){
+    URL=`python mozurl.py "$1" "$2"`
     cd ~/tmp/
-
-    wget "$FIREFOX_URL" -O firefox.tar.bz2
-    wget "$THUNDER_URL" -O thunder.tar.bz2
-
+    wget "$URL" -O firefox.tar.bz2
     tar -xvjf firefox.tar.bz2
-    tar -xvjf thunder.tar.bz2
-    rm firefox.tar.bz2 thunder.tar.bz2
-
-    [ -e /usr/lib/firefox/ ] && sudo rm -r /usr/lib/firefox/
-    [ -e /usr/lib/thunderbird/ ] && sudo rm -r /usr/lib/thunderbird/
-    sudo mv firefox /usr/lib/
-    sudo mv thunderbird /usr/lib/
-
+    rm firefox.tar.bz2
+    [ -e "/usr/lib/$1/" ] && sudo rm -r "/usr/lib/$1/"
+    sudo mv $1 /usr/lib/
     cd /usr/bin/
-    sudo rm -f firefox
-    sudo rm -f thunderbird
-
-    sudo ln -s ../lib/thunderbird/thunderbird thunderbird
-    sudo ln -s ../lib/firefox/firefox firefox
-
-    sudo aptitude hold firefox || echo "holding firefox failled"
-    sudo aptitude hold firefox-gnome-support || echo "holding firefox failled"
-    sudo aptitude hold firefox-globalmenu || echo "holding firefox failled"
-    sudo aptitude hold firefox-locale-en || echo "holding firefox failled"
-    sudo aptitude hold thunderbird || echo "holding thunderbird failled"
-
-    sudo update-alternatives --set x-www-browser /usr/bin/firefox
-    sudo update-alternatives --set gnome-www-browser /usr/bin/firefox
+    sudo rm -f $1
+    sudo ln -s ../lib/$1/$1 $1
 }
+
+confirm "install firefox" && install_mozilla firefox aurora
+confirm "install thunderbird" && install_mozilla thunderbird aurora
+
+sudo aptitude hold firefox || echo "holding firefox failled"
+sudo aptitude hold firefox-gnome-support || echo "holding firefox failled"
+sudo aptitude hold firefox-globalmenu || echo "holding firefox failled"
+sudo aptitude hold firefox-locale-en || echo "holding firefox failled"
+sudo aptitude hold thunderbird || echo "holding thunderbird failled"
+
+sudo update-alternatives --set x-www-browser /usr/bin/firefox
+sudo update-alternatives --set gnome-www-browser /usr/bin/firefox
 

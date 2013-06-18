@@ -28,10 +28,10 @@ mkdir "$OUTPUT"
 # revision), then fall back to "REMOTE".
 
 WORK_LOCAL="$WORK/$(git name-rev ORIG_HEAD | cut -d' ' -f 2)"
-mkdir "$WORK_LOCAL"
+mkdir -p "$WORK_LOCAL"
 
 WORK_REMOTE="$WORK/$(git name-rev MERGE_HEAD | cut -d' ' -f 2)"
-mkdir "$WORK_REMOTE"
+mkdir -p "$WORK_REMOTE"
 
 cp "$LOCAL" "$WORK_LOCAL/${FILE}"
 cp "$REMOTE" "$WORK_REMOTE/${FILE}"

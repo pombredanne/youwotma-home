@@ -68,3 +68,6 @@ ubuntu-restricted-extras
 php-pear
 x264
 ruby-compass
+lftp
+corkscrew
+ghex

@@ -17,3 +17,8 @@ lnhome .wgetrc
 mkdir -p ~/.config/
 lnhome .config/ranger
 
+confirm "Copy wgetrc & 95Proxy (apt-proxy)" && {
+    sudo cp wgetrc /etc/
+    sudo cp 95Proxy /etc/apt/apt.conf.d/
+}
+

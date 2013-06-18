@@ -6,7 +6,7 @@
 
 
 # Crear directorios temporales al iniciar (añadir a /etc/rc.local)
-#for dir in apparmor apt cups dist-upgrade fsck gdm installer samba unattended-upgrades ; do
+#for dir in apparmor apt cups dist-upgrade fsck gdm installer samba unattended-upgrades redis ; do
 #        if [ ! -e /var/log/$dir ] ; then
 #                mkdir /var/log/$dir
 #        fi
