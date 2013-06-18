@@ -2,6 +2,7 @@
 
 :source ~/.vimperator/manual/_libly.js
 :source ~/.vimperator/manual/feedSomeKeys_3.js
+:source ~/.vimperator/manual/proxy.js
 
 :set noscrollbars
 :set defsearch=google
