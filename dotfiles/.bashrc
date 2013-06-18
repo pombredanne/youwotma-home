@@ -4,7 +4,7 @@
 
 # Pone las variables de estado del proxy segun ~/.proxy
 proxy=`cat /home/carl/.proxy`
-if [ "$proxy" == "" ]
+if [ "$proxy" = "" ]
 then
     unset http_proxy
     unset HTTP_PROXY
