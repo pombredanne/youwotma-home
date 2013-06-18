@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+set -e
 
 ACTS="apagar dropbox uma casa proxy_on servidores reboot proxy_off"
 if [ x`cat ~/.pcname` = xlaptop ]
@@ -37,6 +37,8 @@ then
 elif [ "$action" = "servidores" ]
 then
   /etc/init.d/apache2 start
-  /etc/init.d/mysql start
+  sudo mkdir /var/run/mysqld/
+  sudo chmod 777 /var/run/mysqld/
+  sudo mysqld
 fi
 
