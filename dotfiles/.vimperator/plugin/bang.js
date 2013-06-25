@@ -1,4 +1,6 @@
 (function() {
+    var tpb = "pirateproxy.net"; // Make it easy to change the tpb mirror (FUCK YOU Virgin Media)
+
     var bangs = {
 "rls":encodeURIComponent("http://www.rlslog.net/?s=PLACEHOLDER&sbutt=Go"),
 "sub":encodeURIComponent("http://www.subtitulos.es/search.php?cx=partner-pub-9712736367130269%3A92aabu-f398&cof=FORID%3A10&ie=ISO-8859-1&q=PLACEHOLDER&sa=Buscar&siteurl=www.subtitulos.es%2F"),
@@ -197,6 +199,7 @@
 "macaddress":"http%3A//www.coffer.com/mac_find/%3Fstring%3D00%253A13%253AA9",
 "b":"http%3A//www.bing.com/search%3Fq%3DPLACEHOLDER",
 "tripadvisor":"http%3A//www.tripadvisor.com/Search%3Fq%3DPLACEHOLDER%26sub-search%3DGo",
+"ta":"http%3A//www.tripadvisor.com/Search%3Fq%3DPLACEHOLDER%26sub-search%3DGo",
 "icons":"http%3A//www.iconfinder.com/search/%3Fq%3DPLACEHOLDER",
 "mpfl":"http%3A//southflorida.menupages.com/restaurants/text/PLACEHOLDER/all-areas/all-neighborhoods/all-cuisines/",
 "pyside":"http%3A//www.pyside.org/docs/pyside/search.html%3Fq%3DPLACEHOLDER%26check_keywords%3Dyes%26area%3Ddefault",
@@ -782,7 +785,7 @@
 "googlemaps":"https%3A//maps.google.com/maps%3Fq%3DPLACEHOLDER",
 "thwiki":"http%3A//en.touhouwiki.net/index.php%3Ftitle%3DSpecial%253ASearch%26search%3DPLACEHOLDER",
 "git":"http%3A//www.google.it/search%3Fsource%3Dhp%26q%3DPLACEHOLDER%26meta%3D%26aq%3Df%26aqi%3Dg10%26aql%3D%26oq%3D%26gs_rfai%3D",
-"piratebay":"http://tpb.piraten.lu/search/PLACEHOLDER/0/7/0",
+"piratebay":"http://" + tpb + "/search/PLACEHOLDER/0/7/0",
 "lmgtfy":"http%3A//www.lmgtfy.com/%3Fq%3DPLACEHOLDER",
 "collegeboard":"http%3A//search.collegeboard.com/servlet/sitesearch%3Fmss%3Dcb%26kl%3DXX%26i%3DCBI%26searchType%3Dsite%26q%3DPLACEHOLDER%26submit.x%3D0%26submit.y%3D0",
 "nba":"http%3A//www.nba.com/search/%3Ftext%3DPLACEHOLDER",
@@ -1000,7 +1003,7 @@
 "foxnews":"http%3A//www.foxnews.com/search-results/search%3Fq%3DPLACEHOLDER",
 "ebayat":"http%3A//rover.ebay.com/rover/1/5221-53469-19255-0/1%3Ficep_ff3%3D9%26pub%3D5574933636%26toolid%3D10001%26campid%3D5336728181%26customid%3D%26icep_uq%3DPLACEHOLDER%26icep_sellerId%3D%26icep_ex_kw%3D%26icep_sortBy%3D12%26icep_catId%3D%26icep_minPrice%3D%26icep_maxPrice%3D%26ipn%3Dpsmain%26icep_vectorid%3D229473%26kwid%3D902099%26mtid%3D824%26kw%3Dlg",
 "firefox":"https%3A//addons.mozilla.org/en-US/firefox/search/%3Fq%3DPLACEHOLDER%26cat%3Dall%26lver%3Dany%26pid%3D1%26sort%3D%26pp%3D20%26lup%3D%26advanced%3D",
-"tpb":"http://tpb.piraten.lu/search/PLACEHOLDER/0/7/0",
+"tpb":"http://" + tpb + "/search/PLACEHOLDER/0/7/0",
 "m":"https%3A//maps.google.com/maps%3Fq%3DPLACEHOLDER",
 "vimeo":"http%3A//vimeo.com/tag%3APLACEHOLDER",
 "shodanhq":"http%3A//www.shodanhq.com/%3Fq%3DPLACEHOLDER",

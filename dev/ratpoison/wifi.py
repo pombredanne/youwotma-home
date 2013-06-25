@@ -2,7 +2,7 @@
 
 import ratopen as rat
 from subprocess import Popen, PIPE
-import re,time
+import re,time, os
 def start_wpa():
   rat.rat_echo("Iniciando WPA")
   Popen(["wpa_supplicant","-c/etc/wpa_supplicant.conf","-iwlan0","-B"])
@@ -62,20 +62,21 @@ def firefox_proxy(on):
   import socket
 
   HOST = 'localhost'    # The remote host
-  PORT = 3142              # The same port as used by the server
+  PORT = 3144              # The same port as used by the server
   s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
   s.connect((HOST, PORT))
   s.send(cmd + "\n")
   s.close()
 
 def sed_proxy(on, offcmd, oncmd, file):
-    foo = ["sed", "-i"]
-    if on:
-        foo += [oncmd]
-    else:
-        foo += [offcmd]
-    foo += [file]
-    Popen(foo).wait()
+    if os.path.exists(file):
+        foo = ["sed", "-i"]
+        if on:
+            foo += [oncmd]
+        else:
+            foo += [offcmd]
+        foo += [file]
+        Popen(foo).wait()
 
 @proxyaction
 def wget_proxy(on):

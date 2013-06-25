@@ -108,6 +108,13 @@ if has("gui_running")
     au BufWritePost * :silent !/home/carl/.vim/aftersave.sh "%:p"
     au BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
 
+    let g:ctrlp_map = '<F12>'
+    let g:ctrlp_custom_ignore = '\v[\/](node_modules)$' "
+    let g:detectindent_preferred_indent = 4
+    let g:detectindent_preferred_expandtab = 1
+    autocmd BufReadPost * :DetectIndent
+    set colorcolumn=+1
+    hi ColorColumn guibg=#333
 
     call pathogen#runtime_append_all_bundles()
 
@@ -138,7 +145,6 @@ if has("gui_running")
     map <MiddleMouse> <Nop>
     imap <MiddleMouse> <Nop>
 
-
     " Muestra los espacios al final en rojo
     highlight ExtraWhitespace ctermbg=red guibg=red
     match ExtraWhitespace /\s\+$/
@@ -147,6 +153,10 @@ if has("gui_running")
     autocmd InsertLeave * match ExtraWhitespace /\s\+$/
     autocmd BufWinLeave * call clearmatches()
 
+    highlight SpecialKey guibg=#242424
+    highlight SpecialKey guifg=#373737
+    set list
+    set listchars=tab:▸\ 
 
     " pydiction
     let g:pydiction_location = '/home/carl/dev/pydiction/complete-dict'
@@ -156,10 +166,12 @@ if has("gui_running")
 
     " alias ,t -> tabnew. El espacio al final es intencionado
     map ,t :tabnew 
+    vmap ,f :!js-beautify -<CR>
 
     " NERDtree
     map <F2> :NERDTreeToggle<CR>
     nnoremap <F4> :GundoToggle<CR>
+    nnoremap <silent> <F11> :YRShow<CR>
 
     "Cuando borro con la x, no escribir en los registros
     map x "_dl
@@ -167,5 +179,11 @@ if has("gui_running")
 
     " Fix vim-css-color en scss
     autocmd FileType sass,scss,stylus syn cluster sassCssAttributes add=@cssColors
+
+    " Open files in new tab in CtrlP
+    let g:ctrlp_prompt_mappings = {
+        \ 'AcceptSelection("e")': ['<c-t>'],
+        \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+        \ }
 
 endif

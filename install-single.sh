@@ -1,3 +1,4 @@
+#!/bin/bash
 
 [ ! -x "$1/install.sh" ] && {
     echo "$1/install.sh not found/ insufficient permissions"

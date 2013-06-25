@@ -7,18 +7,6 @@
 // }}}
 //
 // PLUGIN INFO: {{{
-var PLUGIN_INFO = xml`<VimperatorPlugin>
-  <name>proxy</name>
-  <description>proxy commands.</description>
-  <minVersion>2.3pre</minVersion>
-  <maxVersion>2.3</maxVersion>
-  <license>MIT style license</license>
-  <version>0.10.2</version>
-  <detail><![CDATA[
-    Foobar
-  ]]></detail>
-</VimperatorPlugin>`;
-// }}}
 var vimp_server_started = false;
 
 
@@ -33,7 +21,7 @@ let self = liberator.plugins.proxy = (function(){
                 var stream = transport.openInputStream(0, 0, 0);
                 var instream = Components.classes['@mozilla.org/intl/converter-input-stream;1']
                                     .createInstance(Components.interfaces.nsIConverterInputStream);
-                instream.init(stream, 'UTF-8', 1024,Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
+                instream.init(stream, 'UTF-8', 1024, Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
 
 
                 var listener = {
@@ -43,8 +31,8 @@ let self = liberator.plugins.proxy = (function(){
                         instream.close();
                     },
                     onDataAvailable: function(request, context, stream, offset, count) {
-                        var str = {}
-                        instream.readString(count, str)
+                        var str = {};
+                        instream.readString(count, str);
                         this.requestData += str.value;
                         var index = this.requestData.indexOf("\n");
                         while(index>=0){
@@ -67,9 +55,9 @@ let self = liberator.plugins.proxy = (function(){
         };
 
         serverSocket = Components.classes["@mozilla.org/network/server-socket;1"].createInstance(Components.interfaces.nsIServerSocket);
-        serverSocket.init(3142,false,-1);
+
+        serverSocket.init(3144, true, -1);
         serverSocket.asyncListen(async_listener);
-        serverStarted = true;
     }
 
     function setProxy(on){
@@ -95,7 +83,7 @@ let self = liberator.plugins.proxy = (function(){
         true
     );
 
-    var PUBLICS = {}
+    var PUBLICS = {};
 
     return PUBLICS;
 })();

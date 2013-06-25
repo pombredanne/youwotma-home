@@ -2,13 +2,14 @@
 
 :source ~/.vimperator/manual/_libly.js
 :source ~/.vimperator/manual/feedSomeKeys_3.js
+:source ~/.vimperator/manual/proxy.js
 
 :set noscrollbars
 :set defsearch=google
 
 :command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
 
-:lazy fmaps -u='www\.google\.com/reader' -events=vkeypress j k s
+:lazy fmaps -u='cloud\.feedly\.com' -events=keypress j k s
 :lazy fmaps -u='www\.reddit\.com' -events=vkeydown j k x a z h l
 :lazy fmaps -u='twitter\.com' -events=keypress j k .
 :lazy fmaps -u='boston\.com' -events=keypress j k
@@ -20,7 +21,7 @@
 :map ,t :switchoropen domain (www\\.)?twitter\\.com https://twitter.com<cr>
 :map ,f :switchoropen domain (www\\.)?facebook\\.com https://facebook.com<cr>
 :map ,m :switchoropen domain mail\\.google\\.com http://mail.bengoarocandio.com|http://correo.mozilla-hispano.org<cr>
-:map ,g :switchoropen url (www\\.)?google\\.com/reader http://google.com/reader/view<cr>
+:map ,g :switchoropen url cloud\\.feedly\\.com http://cloud.feedly.com/#latest<cr>
 :map ,h :switchoropen url 127\\.0\\.0\\.1:9091 http://127.0.0.1:9091<cr>
 
 :map j :!~/dev/vimperatorscroll/scrollevent down 3<cr><esc>

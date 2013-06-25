@@ -22,3 +22,21 @@
 [submodule "dotfiles/.vim/bundle/vim-css-color"]
 	path = dotfiles/.vim/bundle/vim-css-color
 	url = https://github.com/ap/vim-css-color
+[submodule "dotfiles/.vim/bundle/ctrlp"]
+	path = dotfiles/.vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim
+[submodule "dotfiles/.vim/bundle/vim-surround"]
+	path = dotfiles/.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "dotfiles/.vim/bundle/vim-showmarks"]
+	path = dotfiles/.vim/bundle/vim-showmarks
+	url = https://github.com/vimez/vim-showmarks.git
+[submodule "dotfiles/.vim/bundle/yankring"]
+	path = dotfiles/.vim/bundle/yankring
+	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "dotfiles/.vim/bundle/vim-jst"]
+	path = dotfiles/.vim/bundle/vim-jst
+	url = https://github.com/briancollins/vim-jst
+[submodule "dotfiles/.vim/bundle/detectindent"]
+	path = dotfiles/.vim/bundle/detectindent
+	url = https://github.com/ciaranm/detectindent.git

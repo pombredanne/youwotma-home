@@ -6,6 +6,8 @@ bind Escape abort
 
 set font droidsansmono-11
 
+addhook switchframe info
+
 # Hack para quitar los bordes que están en el borde de la pantalla
 set padding -1 -1 -1 -1
 set border 1
@@ -26,7 +28,7 @@ bind B exec ratopen gmpc
 bind E exec skype-open
 #bind W exec ratopen empathy empathy
 #bind W exec ratopen pidgin pidgin
-bind H exec ratopen transmission-gtk
+#bind H exec ratopen transmission-gtk
 bind g exec ratopen gvim gvim
 bind ntilde exec wicd-client -n
 bind Ntilde exec gnome-control-center
@@ -52,10 +54,6 @@ definekey top s-Left exec ratpoison -c "echo $(mpc prev)"
 definekey top s-Delete exec ratpoison -c "echo $(mpc toggle)"
 definekey top s-Insert exec ratpoison -c "echo $(mpc)"
 
-#look of dissaprovalstartup-root.sh
-definekey top s-l exec dev/ratpoison/lookofdissaproval.sh
-bind s-l exec dev/ratpoison/lookofdissaproval.sh
-
 exec dev/ratpoison/startup.sh
 
 #copiado de por ahi - reloj mas completo
@@ -63,6 +61,9 @@ bind a exec dev/ratpoison/relog.sh
 
 #Informacion de la bateria
 bind t exec ratpoison -c "echo `acpi -V`"
+
+#Dropbox
+bind F4 exec ratpoison -c "echo `dropbox.py status`"
 
 #captura de pantalla
 bind Insert exec dev/ratpoison/screenshoot.sh
@@ -72,6 +73,8 @@ bind C-p cpre
 
 bind C-n inext
 bind C-p iprev
+
+bind ccedilla swap 0 1
 
 bind o exec sudo dev/ratpoison/wifi-gk
 
