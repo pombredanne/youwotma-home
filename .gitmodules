@@ -37,6 +37,3 @@
 [submodule "dotfiles/.vim/bundle/vim-jst"]
 	path = dotfiles/.vim/bundle/vim-jst
 	url = https://github.com/briancollins/vim-jst
-[submodule "dotfiles/.vim/bundle/detectindent"]
-	path = dotfiles/.vim/bundle/detectindent
-	url = https://github.com/ciaranm/detectindent.git
