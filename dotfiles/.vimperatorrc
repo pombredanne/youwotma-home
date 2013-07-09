@@ -16,6 +16,7 @@
 :lazy fmaps -u='duckduckgo\.com' -events=vkeydown j k v l,o
 :lazy fmaps -u='127.0.0.1/dev/reddit' -events=vkeydown j k h
 :lazy fmaps -u=facebook\\.com -events=keydown h,<Left> l,<Right> q,<Esc>
+:lazy fmaps -u=facebook\\.com -events=vkeydown j k
 
 " :map ,r :switchoropen domain (www\\.)?reddit\\.com http://reddit.com<cr>
 :map ,t :switchoropen domain (www\\.)?twitter\\.com https://twitter.com<cr>
