@@ -3,10 +3,7 @@
 set -e
 
 ACTS="apagar dropbox uma casa proxy_on servidores reboot proxy_off"
-if [ x`cat ~/.pcname` = xlaptop ]
-then
-    ACTS="hibernate $ACTS"
-fi
+ACTS="hibernate $ACTS"
 
 action=`zenity --list --text 'THE GAME' --column accion $ACTS`
 wifi_cmd='/home/carl/dev/ratpoison/wifi.py'

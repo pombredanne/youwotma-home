@@ -74,7 +74,7 @@ bind C-p cpre
 bind C-n inext
 bind C-p iprev
 
-bind ccedilla swap 0 1
+bind ccedilla exec swapwindow
 
 bind o exec sudo dev/ratpoison/wifi-gk
 

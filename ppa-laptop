@@ -1,2 +1,1 @@
-ppa:disper-dev/ppa
-ppa:shiki/mediainfo
+sudo add-apt-repository ppa:disper-dev/ppa

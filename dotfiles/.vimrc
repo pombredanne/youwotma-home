@@ -80,7 +80,7 @@ au BufRead,BufNewFile *.coffee set filetype=coffee  "resaltado de archivos coffe
 set tags=~/.stslib-tags,~/.django-tags
 
 " No auto-añadir saltos de linea
-set tw=0
+set tw=80
 
 " C-Enter abre una nueva linea siempre, aunque este
 " el menú de completar abierto
@@ -166,7 +166,8 @@ if has("gui_running")
 
     " alias ,t -> tabnew. El espacio al final es intencionado
     map ,t :tabnew 
-    vmap ,f :!js-beautify -<CR>
+    autocmd BufWinEnter *.js vmap ,f :!js-beautify -<CR>
+    autocmd BufWinEnter *.py vmap ,f :!PythonTidy <CR>
 
     " NERDtree
     map <F2> :NERDTreeToggle<CR>
