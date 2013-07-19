@@ -39,7 +39,38 @@ gather_files_clone_repos(){
     true
 }
 
-for function in install_ssh clone_repos install_firefox_profile install_mpdscribbe
+gather_files_wicd(){
+    mkdir wicd
+    for setting in wireless wired manager
+    do
+        sudo cp "/etc/wicd/$setting-settings.conf" wicd
+        sudo chmod 666 "wicd/$setting-settings.conf"
+    done
+}
+
+gather_files_lftp(){
+    mkdir lftp
+    for file in bookmarks cwd_history rl_history
+    do
+        sudo cp "~/.lftp/$file" lftp
+        sudo chmod 666 "lftp/$file"
+    done
+}
+
+gather_files_skype(){
+    sudo cp -r ~/.Skype/ skype
+}
+
+gather_files_dropbox(){
+    mkdir dropbox
+    for file in config.db config.dbx
+    do
+        sudo cp "~/.dropbox/$file" dropbox
+        sudo chmod 666 "dropbox/$file"
+    done
+}
+
+for function in install_ssh clone_repos install_firefox_profile install_mpdscribbe wicd lftp skype dropbox
 do
     confirm "$function" && {
         gather_files_$function

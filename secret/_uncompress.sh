@@ -63,6 +63,38 @@ clone_repos(){
     cd "$TMPDIR"
 }
 
+wicd(){
+    sudo mkdir -p /etc/wicd
+    for setting in wireless wired manager
+    do
+        sudo mv -b "wicd/$setting-settings.conf" "/etc/wicd/$setting-settings.conf"
+        sudo chmod 600 "/etc/wicd/$setting-settings.conf"
+    done
+}
+
+lftp(){
+    sudo mkdir -p ~/.lftp/
+    for file in bookmarks cwd_history rl_history
+    do
+        mv -b "lftp/$file" "~/.lftp/$file"
+        chmod 600 "~/.lftp/$file"
+    done
+}
+
+skype(){
+    [ -e ~/.Skype/ ] && mv ~/.Skype/ ~/Skype_bak
+    mv skype ~/.Skype/
+}
+
+dropbox(){
+    sudo mkdir -p ~/.dropbox/
+    for file in config.db config.dbx
+    do
+        mv -b "dropbox/$file" "~/.dropbox/$file"
+        chmod 600 "~/.dropbox/$file"
+    done
+}
+
 cleanup(){
     echo "Deleteng tmp files"
     cd "$CDIR"
